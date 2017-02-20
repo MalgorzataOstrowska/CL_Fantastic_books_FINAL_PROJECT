@@ -1,0 +1,4 @@
+fantastic_books:
+    resource: "@FantasticBooksBundle/Controller/"
+    type:     annotation
+    prefix:   /
