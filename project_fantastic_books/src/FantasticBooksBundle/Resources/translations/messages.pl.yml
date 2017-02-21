@@ -1,0 +1,67 @@
+Main character: Główny bohater
+
+gender:
+  Gender: Płeć
+  female: kobieta
+  male: mężczyzna
+  other: inna
+
+species:
+  Species: Gatunek
+  human: człowiek
+  child of human and not human:  dziecko człowieka i nieczłowieka
+  not human: nieczłowiek
+  child of different not humans: dziecko różnych nieludzi
+  other: inny
+
+age:
+  Age: Wiek
+  child: dziecko
+  teenager: nastolatek
+  adult: dorosły
+  ancient: starożytny
+  other: inny
+
+occupation:
+  Occupation: Zawód
+  warrior: wojownik
+  hunter: łowca
+  killer: zabujca
+  thief: złodziej
+  healer: uzdrowiciel
+  physician: lekarz
+  scholar: uczony
+  teacher: nauczyciel
+  student: student
+  pupil: uczeń
+  policeman: policjant
+  private eye: prywatny detektyw
+  journalist: dziennikarz
+  broker: makler
+  architect: architekt
+  bard: bard
+  musician: muzyk
+  actor: aktor
+  car mechanic: mechanik samochodowy
+  cook: kucharz
+  other: inny
+
+notHuman:
+  Not human: Nieczłowiek
+  mythological creature: mitologiczna istota
+  mythical creature: mityczna istota
+  other: inna
+
+mythology:
+  Mythology: Mitologia
+  celtic: celtycka
+  egyptian: egipska
+  greek: grecka
+  norse: nordycka
+  roman: rzymska
+  slavic: słowiańska
+  other: inna
+
+
+
+

@@ -1,1 +1,177 @@
-Hello World!
+{% extends "::base.html.twig" %}
+{% block body %}
+    <h2>{{ 'Main character'| trans }}:</h2>
+
+    <form>
+        <div class="form-group">
+            <h3>{{ 'gender.Gender'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="radio" name="gender" id="female" value="female"> {{ 'gender.female'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="gender" id="male" value="male"> {{ 'gender.male'| trans }}</label>
+                </div>
+
+                <div class="col-sm-2">
+                    <label><input type="radio" name="gender" id="other" value="other"> {{ 'gender.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'species.Species'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="radio" name="species" id="human" value="human"> {{ 'species.human'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="species" id="notHuman" value="notHuman"> {{ 'species.not human'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="species" id="childOfHumanAndNotHuman" value="childOfHumanAndNotHuman"> {{ 'species.child of human and not human'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="species" id="childOfDifferentNotHumans" value="childOfDifferentNotHumans"> {{ 'species.child of different not humans'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="species" id="other" value="other"> {{ 'species.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'age.Age'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="radio" name="age" id="child" value="child"> {{ 'age.child'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="age" id="teenager" value="teenager"> {{ 'age.teenager'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                        <label><input type="radio" name="age" id="adult" value="adult"> {{ 'age.adult'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="age" id="ancient" value="ancient"> {{ 'age.ancient'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="radio" name="age" id="otherAge" value="otherAge"> {{ 'age.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'occupation.Occupation'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="warrior" id="warrior" value="warrior"> {{ 'occupation.warrior'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="hunter" id="hunter" value="hunter"> {{ 'occupation.hunter'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="policeman" id="policeman" value=" policeman"> {{ 'occupation.policeman'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="privateEye" id="privateEye" value=" privateEye"> {{ 'occupation.private eye'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                        <label><input type="checkbox" name="killer" id="killer" value="killer"> {{ 'occupation.killer'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="thief" id="thief" value=" thief"> {{ 'occupation.thief'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="healer" id="healer" value=" healer"> {{ 'occupation.healer'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="physician" id="physician" value=" physician"> {{ 'occupation.physician'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="scholar" id="scholar" value=" scholar"> {{ 'occupation.scholar'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="teacher" id="teacher" value=" teacher"> {{ 'occupation.teacher'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="student" id="student" value=" student"> {{ 'occupation.student'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="pupil" id="pupil" value=" pupil"> {{ 'occupation.pupil'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="journalist" id="journalist" value=" journalist"> {{ 'occupation.journalist'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="broker" id="broker" value=" broker"> {{ 'occupation.broker'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="architect" id="architect" value=" architect"> {{ 'occupation.architect'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="bard" id="bard" value=" bard"> {{ 'occupation.bard'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="musician" id="musician" value=" musician"> {{ 'occupation.musician'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="actor" id="actor" value=" actor"> {{ 'occupation.actor'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="carMchanic" id="carMchanic" value=" carMchanic"> {{ 'occupation.car mechanic'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="cook" id="cook" value=" cook"> {{ 'occupation.cook'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="otherOccupation" id="otherOccupation" value="otherOccupation"> {{ 'occupation.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'notHuman.Not human'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="mythologicalCreature" id="mythologicalCreature" value="mythologicalCreature"> {{ 'notHuman.mythological creature'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="mythicalCreature" id="mythicalCreature" value="mythicalCreature"> {{ 'notHuman.mythical creature'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="otherNotHuman" id="otherNotHuman" value="otherNotHuman"> {{ 'notHuman.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'mythology.Mythology'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="celtic" id="celtic" value="celtic"> {{ 'mythology.celtic'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="egyptian" id="egyptian" value="egyptian"> {{ 'mythology.egyptian'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="greek" id="greek" value="greek"> {{ 'mythology.greek'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="norse" id="norse" value="norse"> {{ 'mythology.norse'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="roman" id="roman" value="roman"> {{ 'mythology.roman'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="slavic" id="slavic" value="slavic"> {{ 'mythology.slavic'| trans }}</label>
+                </div>
+                <div class="col-sm-2">
+                    <label><input type="checkbox" name="otherMythology" id="otherMythology" value="otherMythology"> {{ 'mythology.other'| trans }}</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit">Add <i class="fa fa-book"></i></button>
+    </form>
+
+{% endblock %}
