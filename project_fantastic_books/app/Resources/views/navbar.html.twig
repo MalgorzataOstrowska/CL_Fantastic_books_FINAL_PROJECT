@@ -4,12 +4,12 @@
             <a class="navbar-brand" href="">Fantastic Books</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="">Home</a></li>
+            <li><a href="{{ path('fantasticbooks_default_index') }}">Home</a></li>
             <li><a href="">New</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href=""><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
     </div>
 </nav>
