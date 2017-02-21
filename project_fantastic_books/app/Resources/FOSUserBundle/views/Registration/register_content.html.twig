@@ -10,6 +10,9 @@
             <div class="col-sm-2">
                 {{ form_widget(form.email) }}
             </div>
+            <div class="col-sm-4">
+                {{ form_errors(form.email) }}
+            </div>
         </div>
         <br>
         <div class="row">
@@ -19,6 +22,9 @@
             <div class="col-sm-2">
                 {{ form_widget(form.username) }}
             </div>
+            <div class="col-sm-4">
+                {{ form_errors(form.username) }}
+            </div>
         </div>
         <br>
         <div class="row">
@@ -27,6 +33,9 @@
             </div>
             <div class="col-sm-2">
                 {{ form_widget(form.plainPassword.children.first) }}
+            </div>
+            <div class="col-sm-4">
+                {{ form_errors(form.plainPassword.children.first) }}
             </div>
         </div>
         <br>
@@ -43,4 +52,11 @@
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
+
+
+
+
+
 {{ form_end(form) }}
+
+

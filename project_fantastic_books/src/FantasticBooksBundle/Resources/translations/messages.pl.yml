@@ -48,8 +48,15 @@ occupation:
 
 notHuman:
   Not human: Nieczłowiek
-  mythological creature: mitologiczna istota
-  mythical creature: mityczna istota
+  biblical character: postać biblijna
+  mythological character: postać mitologiczna
+  other: inna
+
+biblicalCharacters:
+  Biblical characters: Bostacie biblijne
+  angel: anioł
+  devil: diabeł
+  demon: demon
   other: inna
 
 mythology:
