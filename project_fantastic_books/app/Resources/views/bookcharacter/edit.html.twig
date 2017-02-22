@@ -45,6 +45,10 @@
         {% if age == 'otherAge' %}checked{% endif %}
     {% endblock %}
 
+    {% block ability_magic %}
+        {% if 'magic' in  ability %}checked{% endif %}
+    {% endblock %}
+
 
     {% block submitBook %}
         <button type="submit">Edit book </button>
@@ -53,9 +57,9 @@
                 <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
             </li>
             <li>
-                {{ form_start(delete_form) }}
+                {#{{ form_start(delete_form) }}#}
                 <input type="submit" value="Delete">
-                {{ form_end(delete_form) }}
+                {#{{ form_end(delete_form) }}#}
             </li>
         </ul>
     {% endblock %}

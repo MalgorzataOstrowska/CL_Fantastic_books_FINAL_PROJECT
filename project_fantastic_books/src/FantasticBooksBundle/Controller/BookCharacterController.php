@@ -147,14 +147,7 @@ class BookCharacterController extends Controller
 
         $deleteForm = $this->createDeleteForm($bookCharacter);
         echo '<br><br><br><br>';
-        echo $bookCharacter->getName();
-        echo '<br>';
-        echo $bookCharacter->getGender();
-        echo '<br>';
-        echo $bookCharacter->getSpecies();
-        echo '<br>';
-        echo $bookCharacter->getAge();
-        echo '<br>';
+
         echo $ability = $bookCharacter->getAbility();
         $ability = (explode(",",$ability));
         var_dump($ability);
@@ -175,6 +168,7 @@ class BookCharacterController extends Controller
             'gender' => $bookCharacter->getGender(),
             'species' => $bookCharacter->getSpecies(),
             'age' => $bookCharacter->getAge(),
+            'ability' => $ability,
 
         ));
 
