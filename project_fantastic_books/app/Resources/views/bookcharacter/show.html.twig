@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bookcharacter</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bookCharacter.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ bookCharacter.name }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ bookCharacter.gender }}</td>
+            </tr>
+            <tr>
+                <th>Species</th>
+                <td>{{ bookCharacter.species }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ bookCharacter.age }}</td>
+            </tr>
+            <tr>
+                <th>Ability</th>
+                <td>{{ bookCharacter.ability }}</td>
+            </tr>
+            <tr>
+                <th>Occupation</th>
+                <td>{{ bookCharacter.occupation }}</td>
+            </tr>
+            <tr>
+                <th>Nothuman</th>
+                <td>{{ bookCharacter.notHuman }}</td>
+            </tr>
+            <tr>
+                <th>Mythology</th>
+                <td>{{ bookCharacter.mythology }}</td>
+            </tr>
+            <tr>
+                <th>Biblicalcharacter</th>
+                <td>{{ bookCharacter.biblicalCharacter }}</td>
+            </tr>
+            <tr>
+                <th>Mythologicalcreature</th>
+                <td>{{ bookCharacter.mythologicalCreature }}</td>
+            </tr>
+            <tr>
+                <th>Animalbeast</th>
+                <td>{{ bookCharacter.animalBeast }}</td>
+            </tr>
+            <tr>
+                <th>Othercreature</th>
+                <td>{{ bookCharacter.otherCreature }}</td>
+            </tr>
+            <tr>
+                <th>Otherinformations</th>
+                <td>{{ bookCharacter.otherInformations }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('editor_bookcharacter_edit', { 'id': bookCharacter.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
