@@ -2,7 +2,7 @@
 {% block body %}
     <h2>{{ 'Character'| trans }}:</h2>
 
-    <form>
+    <form action="{{ path('concat_data') }}" method="get">
         <div class="form-group">
             <h3>{{ 'name.Name'| trans }}:</h3>
             <div class="row">
@@ -122,61 +122,61 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="magic" id="magic" value="magic">
+                        <input type="checkbox" name="ability[]" id="magic" value="magic">
                         {{ 'ability.magic'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="flying" id="flying" value="flying">
+                        <input type="checkbox" name="ability[]" id="flying" value="flying">
                         {{ 'ability.flying'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="teleportation" id="teleportation"
+                        <input type="checkbox" name="ability[]" id="teleportation"
                                value="teleportation">
                         {{ 'ability.teleportation'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="telekinesis" id="telekinesis"
+                        <input type="checkbox" name="ability[]" id="telekinesis"
                                value="telekinesis">
                         {{ 'ability.telekinesis'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="invisibility" id="invisibility"
+                        <input type="checkbox" name="ability[]" id="invisibility"
                                value="invisibility">
                         {{ 'ability.invisibility'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="telepathy" id="telepathy"
+                        <input type="checkbox" name="ability[]" id="telepathy"
                                value="telepathy">
                         {{ 'ability.telepathy'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="foreseeFuture" id="foreseeFuture"
+                        <input type="checkbox" name="ability[]" id="foreseeFuture"
                                value="foreseeFuture">
                         {{ 'ability.foresee future'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="seeingPast" id="seeingPast"
+                        <input type="checkbox" name="ability[]" id="seeingPast"
                                value="seeingPast">
                         {{ 'ability.seeing past'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="otherAbility"
+                        <input type="checkbox" name="ability[]"
                                id="otherAbility" value="otherAbility">
                         {{ 'ability.other'| trans }}
                     </label>

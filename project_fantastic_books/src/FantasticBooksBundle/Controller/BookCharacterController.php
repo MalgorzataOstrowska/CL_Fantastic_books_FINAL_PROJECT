@@ -39,22 +39,14 @@ class BookCharacterController extends Controller
      */
     public function newAction(Request $request)
     {
-        $bookCharacter = new Bookcharacter();
-        $form = $this->createForm('FantasticBooksBundle\Form\BookCharacterType', $bookCharacter);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($bookCharacter);
-            $em->flush($bookCharacter);
-
-            return $this->redirectToRoute('editor_bookcharacter_show', array('id' => $bookCharacter->getId()));
+        if($request->isMethod(Request::METHOD_POST)){
+            echo '<pre>';
+            print_r($_POST);
+            die;
         }
 
-        return $this->render('bookcharacter/new.html.twig', array(
-            'bookCharacter' => $bookCharacter,
-            'form' => $form->createView(),
-        ));
+
+        return $this->render('bookcharacter/new.html.twig');
     }
 
     /**
