@@ -42,9 +42,80 @@ class BookCharacterController extends Controller
         if($request->isMethod(Request::METHOD_POST)){
             echo '<pre>';
             print_r($_POST);
-            die;
-        }
 
+            $bookCharacter = new Bookcharacter();
+
+            $name = $request->get('name');
+            $bookCharacter->setName($name);
+
+            $gender = $request->get('gender');
+            $bookCharacter->setGender($gender);
+
+            $species = $request->get('species');
+            $bookCharacter->setSpecies($species);
+
+            $age = $request->get('age');
+            $bookCharacter->setAge($age);
+
+            $ability = $request->get('ability');
+            if(is_array($ability)){
+                $ability = implode(",", $ability);
+            }
+            $bookCharacter->setAbility($ability);
+
+            $occupation = $request->get('occupation');
+            if(is_array($occupation)) {
+                $occupation = implode(",", $occupation);
+            }
+            $bookCharacter->setOccupation($occupation);
+
+            $notHuman = $request->get('notHuman');
+            if(is_array($notHuman)) {
+                $notHuman = implode(",", $notHuman);
+            }
+            $bookCharacter->setNotHuman($notHuman);
+
+            $mythology = $request->get('mythology');
+            if(is_array($mythology)) {
+                $mythology = implode(",", $mythology);
+            }
+            $bookCharacter->setMythology($mythology);
+
+            $biblicalCharacter = $request->get('biblicalCharacter');
+            if(is_array($biblicalCharacter)) {
+                $biblicalCharacter = implode(",", $biblicalCharacter);
+            }
+            $bookCharacter->setBiblicalCharacter($biblicalCharacter);
+
+            $mythologicalCreature = $request->get('mythologicalCreature');
+            if(is_array($mythologicalCreature)) {
+                $mythologicalCreature = implode(",", $mythologicalCreature);
+            }
+            $bookCharacter->setMythologicalCreature($mythologicalCreature);
+
+            $animalBeast = $request->get('animalBeast');
+            if(is_array($animalBeast)) {
+                $animalBeast = implode(",", $animalBeast);
+            }
+            $bookCharacter->setAnimalBeast($animalBeast);
+
+            $otherCreature = $request->get('otherCreature');
+            if(is_array($otherCreature)) {
+                $otherCreature = implode(",", $otherCreature);
+            }
+            $bookCharacter->setOtherCreature($otherCreature);
+
+            $otherInformation = $request->get('otherInformation');
+            $bookCharacter->setOtherInformations($otherInformation);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($bookCharacter);
+            $em->flush($bookCharacter);
+
+            return $this->redirectToRoute('editor_bookcharacter_show',
+                ['id' => $bookCharacter->getId()]
+            );
+        }
 
         return $this->render('bookcharacter/new.html.twig');
     }
