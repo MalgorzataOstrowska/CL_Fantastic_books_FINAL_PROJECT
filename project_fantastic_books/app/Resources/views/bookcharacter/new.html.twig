@@ -144,56 +144,64 @@
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="ability[]" id="flying" value="flying">
+                        <input type="checkbox" name="ability[]" id="flying" value="flying"
+                                {% block ability_flying %}{% endblock %}>
                         {{ 'ability.flying'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="teleportation"
-                               value="teleportation">
+                               value="teleportation"
+                                {% block ability_teleportation %}{% endblock %}>
                         {{ 'ability.teleportation'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="telekinesis"
-                               value="telekinesis">
+                               value="telekinesis"
+                        {% block ability_telekinesis %}{% endblock %}>
                         {{ 'ability.telekinesis'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="invisibility"
-                               value="invisibility">
+                               value="invisibility"
+                                {% block ability_invisibility %}{% endblock %}>
                         {{ 'ability.invisibility'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="telepathy"
-                               value="telepathy">
+                               value="telepathy"
+                                {% block ability_telepathy %}{% endblock %}>
                         {{ 'ability.telepathy'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="foreseeFuture"
-                               value="foreseeFuture">
+                               value="foreseeFuture"
+                                {% block ability_foreseeFuture %}{% endblock %}>
                         {{ 'ability.foresee future'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]" id="seeingPast"
-                               value="seeingPast">
+                               value="seeingPast"
+                                {% block ability_seeingPast %}{% endblock %}>
                         {{ 'ability.seeing past'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="ability[]"
-                               id="otherAbility" value="otherAbility">
+                               id="otherAbility" value="otherAbility"
+                                {% block ability_otherAbility %}{% endblock %}>
                         {{ 'ability.other'| trans }}
                     </label>
                 </div>
@@ -205,128 +213,149 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="warrior" value="warrior">
+                        <input type="checkbox" name="occupation[]" id="warrior" value="warrior"
+                                {% block occupation_warrior %}{% endblock %}>
                         {{ 'occupation.warrior'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="hunter" value="hunter">
+                        <input type="checkbox" name="occupation[]" id="hunter" value="hunter"
+                                {% block occupation_hunter %}{% endblock %}>
                         {{ 'occupation.hunter'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="policeman" value="policeman">
+                        <input type="checkbox" name="occupation[]" id="policeman" value="policeman"
+                                {% block occupation_policeman %}{% endblock %}>
                         {{ 'occupation.policeman'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="privateEye" value="privateEye">
+                        <input type="checkbox" name="occupation[]" id="privateEye" value="privateEye"
+                                {% block occupation_privateEye %}{% endblock %}>
                         {{ 'occupation.private eye'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                         <label>
-                            <input type="checkbox" name="occupation[]" id="killer" value="killer">
+                            <input type="checkbox" name="occupation[]" id="killer" value="killer"
+                                    {% block occupation_killer %}{% endblock %}>
                             {{ 'occupation.killer'| trans }}
                         </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="thief" value="thief">
+                        <input type="checkbox" name="occupation[]" id="thief" value="thief"
+                                {% block occupation_thief %}{% endblock %}>
                         {{ 'occupation.thief'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="healer" value="healer">
+                        <input type="checkbox" name="occupation[]" id="healer" value="healer"
+                                {% block occupation_healer %}{% endblock %}>
                         {{ 'occupation.healer'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="physician" value="physician">
+                        <input type="checkbox" name="occupation[]" id="physician" value="physician"
+                                {% block occupation_physician %}{% endblock %}>
                         {{ 'occupation.physician'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="scholar" value="scholar">
+                        <input type="checkbox" name="occupation[]" id="scholar" value="scholar"
+                                {% block occupation_scholar %}{% endblock %}>
                         {{ 'occupation.scholar'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="teacher" value="teacher">
+                        <input type="checkbox" name="occupation[]" id="teacher" value="teacher"
+                                {% block occupation_teacher %}{% endblock %}>
                         {{ 'occupation.teacher'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="student" value="student">
+                        <input type="checkbox" name="occupation[]" id="student" value="student"
+                                {% block occupation_student %}{% endblock %}>
                         {{ 'occupation.student'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="pupil" value="pupil">
+                        <input type="checkbox" name="occupation[]" id="pupil" value="pupil"
+                                {% block occupation_pupil %}{% endblock %}>
                         {{ 'occupation.pupil'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="journalist" value="journalist">
+                        <input type="checkbox" name="occupation[]" id="journalist" value="journalist"
+                                {% block occupation_journalist %}{% endblock %}>
                         {{ 'occupation.journalist'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="broker" value="broker">
+                        <input type="checkbox" name="occupation[]" id="broker" value="broker"
+                                {% block occupation_broker %}{% endblock %}>
                         {{ 'occupation.broker'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="architect" value="architect">
+                        <input type="checkbox" name="occupation[]" id="architect" value="architect"
+                                {% block occupation_architect %}{% endblock %}>
                         {{ 'occupation.architect'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="bard" value="bard">
+                        <input type="checkbox" name="occupation[]" id="bard" value="bard"
+                                {% block occupation_bard %}{% endblock %}>
                         {{ 'occupation.bard'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="musician" value="musician">
+                        <input type="checkbox" name="occupation[]" id="musician" value="musician"
+                                {% block occupation_musician %}{% endblock %}>
                         {{ 'occupation.musician'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="actor" value="actor">
+                        <input type="checkbox" name="occupation[]" id="actor" value="actor"
+                                {% block occupation_actor %}{% endblock %}>
                         {{ 'occupation.actor'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="carMechanic" value="carMechanic">
+                        <input type="checkbox" name="occupation[]" id="carMechanic" value="carMechanic"
+                                {% block occupation_carMechanic %}{% endblock %}>
                         {{ 'occupation.car mechanic'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="checkbox" name="occupation[]" id="cook" value="cook">
+                        <input type="checkbox" name="occupation[]" id="cook" value="cook"
+                                {% block occupation_cook %}{% endblock %}>
                         {{ 'occupation.cook'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="checkbox" name="occupation[]" id="otherOccupation"
-                               value="otherOccupation">
+                               value="otherOccupation"
+                                {% block occupation_otherOccupation %}{% endblock %}>
                         {{ 'occupation.other'| trans }}
                     </label>
                 </div>
@@ -614,7 +643,10 @@
         {% block submitBook %}
             <button type="submit">Add <i class="fa fa-book"></i></button>
         {% endblock %}
+
     </form>
 
+    {% block buttonsBlock %}
+    {% endblock %}
 
 {% endblock %}

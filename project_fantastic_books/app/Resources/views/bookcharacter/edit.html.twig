@@ -1,5 +1,5 @@
 {% extends 'bookcharacter/new.html.twig' %}
-
+{#-------------------------------------------------------------------------------------------------#}
     {% block gender_female %}
         {% if gender  == 'female' %}checked{% endif %}
     {% endblock %}
@@ -9,7 +9,7 @@
     {% block gender_other %}
         {% if gender  == 'other' %}checked{% endif %}
     {% endblock %}
-
+{#-------------------------------------------------------------------------------------------------#}
     {% block species_human %}
         {% if species == 'human' %}checked{% endif %}
     {% endblock %}
@@ -28,7 +28,7 @@
     {% block species_other %}
         {% if species == 'other' %}checked{% endif %}
     {% endblock %}
-
+{#-------------------------------------------------------------------------------------------------#}
     {% block age_child %}
         {% if age == 'child' %}checked{% endif %}
     {% endblock %}
@@ -44,23 +44,109 @@
     {% block age_otherAge %}
         {% if age == 'otherAge' %}checked{% endif %}
     {% endblock %}
-
+{#-------------------------------------------------------------------------------------------------#}
     {% block ability_magic %}
         {% if 'magic' in  ability %}checked{% endif %}
     {% endblock %}
+    {% block ability_flying %}
+        {% if 'flying' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_teleportation %}
+        {% if 'teleportation' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_telekinesis %}
+        {% if 'telekinesis' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_invisibility %}
+        {% if 'invisibility' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_telepathy %}
+        {% if 'telepathy' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_foreseeFuture %}
+        {% if 'foreseeFuture' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_seeingPast %}
+        {% if 'seeingPast' in  ability %}checked{% endif %}
+    {% endblock %}
+    {% block ability_otherAbility %}
+        {% if 'otherAbility' in  ability %}checked{% endif %}
+    {% endblock %}
+{#-------------------------------------------------------------------------------------------------#}
+    {% block occupation_warrior %}
+        {% if 'warrior' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_hunter %}
+        {% if 'hunter' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_policeman %}
+        {% if 'policeman' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_privateEye %}
+        {% if 'privateEye' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_killer %}
+        {% if 'killer' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_thief %}
+        {% if 'thief' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_healer %}
+        {% if 'healer' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_physician %}
+        {% if 'physician' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_scholar %}
+        {% if 'scholar' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_teacher %}
+        {% if 'teacher' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_student %}
+        {% if 'student' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_pupil %}
+        {% if 'pupil' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_journalist %}
+        {% if 'journalist' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_broker %}
+        {% if 'broker' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_architect %}
+        {% if 'architect' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_bard %}
+        {% if 'bard' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_musician %}
+        {% if 'musician' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_actor %}
+        {% if 'actor' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_carMechanic %}
+        {% if 'carMechanic' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_cook %}
+        {% if 'cook' in  occupation %}checked{% endif %}
+    {% endblock %}
+    {% block occupation_otherOccupation %}
+        {% if 'otherOccupation' in  occupation %}checked{% endif %}
+    {% endblock %}
+{#-------------------------------------------------------------------------------------------------#}
 
 
     {% block submitBook %}
         <button type="submit">Edit book </button>
-        <ul>
-            <li>
-                <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
-            </li>
-            <li>
-                {#{{ form_start(delete_form) }}#}
-                <input type="submit" value="Delete">
-                {#{{ form_end(delete_form) }}#}
-            </li>
-        </ul>
     {% endblock %}
 
+    {% block buttonsBlock %}
+        <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
+
+        {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    {% endblock %}

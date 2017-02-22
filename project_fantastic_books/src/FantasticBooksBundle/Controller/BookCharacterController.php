@@ -148,8 +148,10 @@ class BookCharacterController extends Controller
         $deleteForm = $this->createDeleteForm($bookCharacter);
         echo '<br><br><br><br>';
 
-        echo $ability = $bookCharacter->getAbility();
+        $ability = $bookCharacter->getAbility();
         $ability = (explode(",",$ability));
+        $occupation = $bookCharacter->getOccupation();
+        $occupation = (explode(",",$occupation));
         var_dump($ability);
 //        $editForm = $this->createForm('FantasticBooksBundle\Form\BookCharacterType', $bookCharacter);
 //        $editForm->handleRequest($request);
@@ -169,6 +171,7 @@ class BookCharacterController extends Controller
             'species' => $bookCharacter->getSpecies(),
             'age' => $bookCharacter->getAge(),
             'ability' => $ability,
+            'occupation' => $occupation,
 
         ));
 
