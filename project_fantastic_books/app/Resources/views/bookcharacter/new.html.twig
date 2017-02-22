@@ -7,7 +7,8 @@
             <h3>{{ 'name.Name'| trans }}:</h3>
             <div class="row">
                 <div class="col-sm-2">
-                    <label><input type="text" name="name" id="name"></label>
+                    <label><input type="text" name="name" id="name"
+                                  value="{{ name|default('') }}"></label>
                 </div>
             </div>
         </div>
@@ -17,20 +18,23 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="gender" id="female" value="female">
+                        <input type="radio" name="gender" id="female" value="female"
+                                {% block gender_female %}{% endblock %}>
                         {{ 'gender.female'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="gender" id="male" value="male">
+                        <input type="radio" name="gender" id="male" value="male"
+                                {% block gender_male %}{% endblock %}>
                         {{ 'gender.male'| trans }}
                     </label>
                 </div>
 
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="gender" id="other" value="other">
+                        <input type="radio" name="gender" id="other" value="other"
+                                {% block gender_other %}{% endblock %}>
                         {{ 'gender.other'| trans }}
                     </label>
                 </div>
@@ -42,39 +46,45 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="species" id="human" value="human">
+                        <input type="radio" name="species" id="human" value="human"
+                                {% block species_human %}{% endblock %}>
                         {{ 'species.human'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="species" id="shapeshifter" value="shapeshifter">
+                        <input type="radio" name="species" id="shapeshifter" value="shapeshifter"
+                                {% block species_shapeshifter %}{% endblock %}>
                         {{ 'species.shapeshifter'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="species" id="notHuman" value="notHuman">
+                        <input type="radio" name="species" id="notHuman" value="notHuman"
+                                {% block species_notHuman %}{% endblock %}>
                         {{ 'species.not human'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="radio" name="species" id="childOfHumanAndNotHuman"
-                               value="childOfHumanAndNotHuman">
+                               value="childOfHumanAndNotHuman"
+                                {% block species_childOfHumanAndNotHuman %}{% endblock %}>
                         {{ 'species.child of human and not human'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
                         <input type="radio" name="species" id="childOfDifferentNotHumans"
-                               value="childOfDifferentNotHumans">
+                               value="childOfDifferentNotHumans"
+                                {% block species_childOfDifferentNotHumans %}{% endblock %}>
                         {{ 'species.child of different not humans'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="species" id="other" value="other">
+                        <input type="radio" name="species" id="other" value="other"
+                                {% block species_other %}{% endblock %}>
                         {{ 'species.other'| trans }}
                     </label>
                 </div>
@@ -86,31 +96,36 @@
             <div class="row">
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="age" id="child" value="child">
+                        <input type="radio" name="age" id="child" value="child"
+                                {% block age_child %}{% endblock %}>
                         {{ 'age.child'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="age" id="teenager" value="teenager">
+                        <input type="radio" name="age" id="teenager" value="teenager"
+                                {% block age_teenager %}{% endblock %}>
                         {{ 'age.teenager'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                         <label>
-                            <input type="radio" name="age" id="adult" value="adult">
+                            <input type="radio" name="age" id="adult" value="adult"
+                                    {% block age_adult %}{% endblock %}>
                             {{ 'age.adult'| trans }}
                         </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="age" id="ancient" value="ancient">
+                        <input type="radio" name="age" id="ancient" value="ancient"
+                                {% block age_ancient %}{% endblock %}>
                         {{ 'age.ancient'| trans }}
                     </label>
                 </div>
                 <div class="col-sm-2">
                     <label>
-                        <input type="radio" name="age" id="otherAge" value="otherAge">
+                        <input type="radio" name="age" id="otherAge" value="otherAge"
+                                {% block age_otherAge %}{% endblock %}>
                         {{ 'age.other'| trans }}
                     </label>
                 </div>
@@ -595,8 +610,9 @@
                                   id="otherInformation"></textarea>
                 </div>
         </div>
-
-        <button type="submit">Add <i class="fa fa-book"></i></button>
+        {% block submitBook %}
+            <button type="submit">Add <i class="fa fa-book"></i></button>
+        {% endblock %}
     </form>
 
 

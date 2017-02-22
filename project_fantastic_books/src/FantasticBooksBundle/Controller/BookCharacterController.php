@@ -144,21 +144,40 @@ class BookCharacterController extends Controller
      */
     public function editAction(Request $request, BookCharacter $bookCharacter)
     {
+
         $deleteForm = $this->createDeleteForm($bookCharacter);
-        $editForm = $this->createForm('FantasticBooksBundle\Form\BookCharacterType', $bookCharacter);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('editor_bookcharacter_edit', array('id' => $bookCharacter->getId()));
-        }
-
+        echo '<br><br><br><br>';
+        echo $bookCharacter->getName();
+        echo '<br>';
+        echo $bookCharacter->getGender();
+        echo '<br>';
+        echo $bookCharacter->getSpecies();
+        echo '<br>';
+        echo $bookCharacter->getAge();
+        echo '<br>';
+        echo $ability = $bookCharacter->getAbility();
+        $ability = (explode(",",$ability));
+        var_dump($ability);
+//        $editForm = $this->createForm('FantasticBooksBundle\Form\BookCharacterType', $bookCharacter);
+//        $editForm->handleRequest($request);
+//
+//        if ($editForm->isSubmitted() && $editForm->isValid()) {
+//            $this->getDoctrine()->getManager()->flush();
+//die;
+//            return $this->redirectToRoute('editor_bookcharacter_edit', array('id' => $bookCharacter->getId()));
+//        }
+//
         return $this->render('bookcharacter/edit.html.twig', array(
-            'bookCharacter' => $bookCharacter,
-            'edit_form' => $editForm->createView(),
+//            'bookCharacter' => $bookCharacter,
+//            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'name' => $bookCharacter->getName(),
+            'gender' => $bookCharacter->getGender(),
+            'species' => $bookCharacter->getSpecies(),
+            'age' => $bookCharacter->getAge(),
+
         ));
+
     }
 
     /**

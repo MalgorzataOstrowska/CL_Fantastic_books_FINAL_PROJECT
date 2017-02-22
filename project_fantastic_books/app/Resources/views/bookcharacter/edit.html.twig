@@ -1,21 +1,62 @@
-{% extends 'base.html.twig' %}
+{% extends 'bookcharacter/new.html.twig' %}
 
-{% block body %}
-    <h1>Bookcharacter edit</h1>
+    {% block gender_female %}
+        {% if gender  == 'female' %}checked{% endif %}
+    {% endblock %}
+    {% block gender_male %}
+        {% if gender  == 'male' %}checked{% endif %}
+    {% endblock %}
+    {% block gender_other %}
+        {% if gender  == 'other' %}checked{% endif %}
+    {% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    {% block species_human %}
+        {% if species == 'human' %}checked{% endif %}
+    {% endblock %}
+    {% block species_shapeshifter %}
+        {% if species == 'shapeshifter' %}checked{% endif %}
+    {% endblock %}
+    {% block species_notHuman %}
+        {% if species == 'notHuman' %}checked{% endif %}
+    {% endblock %}
+    {% block species_childOfHumanAndNotHuman %}
+        {% if species == 'childOfHumanAndNotHuman' %}checked{% endif %}
+    {% endblock %}
+    {% block species_childOfDifferentNotHumans %}
+        {% if species == 'childOfDifferentNotHumans' %}checked{% endif %}
+    {% endblock %}
+    {% block species_other %}
+        {% if species == 'other' %}checked{% endif %}
+    {% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+    {% block age_child %}
+        {% if age == 'child' %}checked{% endif %}
+    {% endblock %}
+    {% block age_teenager %}
+        {% if age == 'teenager' %}checked{% endif %}
+    {% endblock %}
+    {% block age_adult %}
+        {% if age == 'adult' %}checked{% endif %}
+    {% endblock %}
+    {% block age_ancient %}
+        {% if age == 'ancient' %}checked{% endif %}
+    {% endblock %}
+    {% block age_otherAge %}
+        {% if age == 'otherAge' %}checked{% endif %}
+    {% endblock %}
+
+
+    {% block submitBook %}
+        <button type="submit">Edit book </button>
+        <ul>
+            <li>
+                <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    {% endblock %}
+
