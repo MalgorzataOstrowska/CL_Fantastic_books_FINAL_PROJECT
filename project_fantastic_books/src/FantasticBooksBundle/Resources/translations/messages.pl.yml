@@ -1,4 +1,7 @@
-Main character: Główny bohater
+Character: Bohater
+
+name:
+  Name: Imię
 
 gender:
   Gender: Płeć
@@ -12,6 +15,7 @@ species:
   child of human and not human:  dziecko człowieka i nieczłowieka
   not human: nieczłowiek
   child of different not humans: dziecko różnych nieludzi
+  shapeshifter: zmiennokształtny
   other: inny
 
 age:
@@ -52,8 +56,8 @@ notHuman:
   mythological character: postać mitologiczna
   other: inna
 
-biblicalCharacters:
-  Biblical characters: Bostacie biblijne
+biblicalCharacter:
+  Biblical character: Postać biblijna
   angel: anioł
   devil: diabeł
   demon: demon
@@ -68,6 +72,53 @@ mythology:
   roman: rzymska
   slavic: słowiańska
   other: inna
+  indian: indiańska
 
+mythologicalCreature:
+  Mythological creature: Postać mitologiczna
+  god: bóg
+  demigod: półbóg
+  nymph: nimfa
+  giant: olbrzym
+  elf: elf
+  dwarf: krasnolud
+  troll: troll
+  orc: ork
+  other: inne
 
+animalBeast:
+  Animal/Beast: Zwierzę/Bestia
+  dragon: smok
+  griffin: gryf
+  harpy: harpia
+  thunderbird: ptaki grzmot
+  wolf: wilk
+  bear: niedźwiedź
+  coyote: kojot
+  hyena: hiena
+
+  other: inne
+
+otherCreature:
+  Other creature: Inna istota
+  vampire: wampir
+  zombie: zombi
+  hobbit: niziołek
+  alien: kosmita
+  other: inna
+
+ability:
+  Abilities: Zdolności
+  magic: magia
+  flying: latanie
+  teleportation: teleportacja
+  telekinesis: telekineza
+  invisibility: niewidzialność
+  telepathy: telepatia
+  foresee future: przewidzenia przyszłości
+  seeing past: widzenie przeszłości
+  other: inne
+
+otherInformations:
+  Other informations: Inne informacje
 
