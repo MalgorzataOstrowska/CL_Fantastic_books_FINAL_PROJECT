@@ -2,7 +2,7 @@
 {% block body %}
     <h2>{{ 'Character'| trans }}:</h2>
 
-    <form action="{{ path('editor_bookcharacter_new') }}" method="POST">
+    <form action="{{ form_address }}" method="POST">
         <div class="form-group">
             <h3>{{ 'name.Name'| trans }}:</h3>
             <div class="row">
@@ -679,8 +679,11 @@
                                   id="otherInformation"></textarea>
                 </div>
         </div>
-        {% block submitBook %}
-            <button type="submit">Add <i class="fa fa-book"></i></button>
+        {% block submitAdd %}
+            <button type="submit" name="submit" value="add">Add <i class="fa fa-book"></i></button>
+        {% endblock %}
+
+        {% block submitEdit %}
         {% endblock %}
 
     </form>

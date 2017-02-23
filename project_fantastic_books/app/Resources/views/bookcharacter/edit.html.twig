@@ -259,8 +259,11 @@
 
 
 
-    {% block submitBook %}
-        <button type="submit">Edit book </button>
+    {% block submitAdd %}
+    {% endblock %}
+
+    {% block submitEdit %}
+        <button type="submit" name="submit" value="edit">Edit book </button>
     {% endblock %}
 
     {% block buttonsBlock %}
