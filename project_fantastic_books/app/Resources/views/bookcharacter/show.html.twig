@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block sidenav %}
+    <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
+    <br>
+    <a href="{{ path('editor_bookcharacter_edit', { 'id': bookCharacter.id }) }}">Edit</a>
+
+    {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+{% endblock %}
 {% block body %}
     <h1>Bookcharacter</h1>
 
@@ -64,17 +73,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('editor_bookcharacter_edit', { 'id': bookCharacter.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}

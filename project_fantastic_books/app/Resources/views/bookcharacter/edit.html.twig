@@ -1,4 +1,13 @@
 {% extends 'bookcharacter/new.html.twig' %}
+
+{% block sidenav %}
+    <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
+
+    {{ form_start(delete_form) }}
+    <input type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+{% endblock %}
+
 {#-------------------------------------------------------------------------------------------------#}
     {% block gender_female %}
         {% if gender  == 'female' %}checked{% endif %}
@@ -267,9 +276,5 @@
     {% endblock %}
 
     {% block buttonsBlock %}
-        <a href="{{ path('editor_bookcharacter_index') }}">Back to the list</a>
 
-        {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
-        {{ form_end(delete_form) }}
     {% endblock %}

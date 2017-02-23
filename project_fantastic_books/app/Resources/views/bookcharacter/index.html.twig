@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block sidenav %}
+    <a href="{{ path('editor_bookcharacter_new') }}">Create a new bookCharacter</a>
+{% endblock %}
+
 {% block body %}
     <h1>Bookcharacters list</h1>
 
@@ -55,9 +59,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_bookcharacter_new') }}">Create a new bookCharacter</a>
-        </li>
-    </ul>
 {% endblock %}
