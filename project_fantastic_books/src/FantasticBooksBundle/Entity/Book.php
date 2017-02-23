@@ -22,6 +22,12 @@ class Book
      *@ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", mappedBy="books")
      */
     private $setOfSeries;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\BookCharacter", indexBy="books")
+     */
+    private $bookCharacters;
+
     /**
      * @var int
      *
@@ -59,6 +65,7 @@ class Book
     {
         $this->authors = new ArrayCollection();
         $this->setOfSeries = new ArrayCollection();
+        $this->characters = new ArrayCollection();
     }
 
 

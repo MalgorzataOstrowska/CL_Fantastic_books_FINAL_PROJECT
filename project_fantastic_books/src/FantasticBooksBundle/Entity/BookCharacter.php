@@ -2,6 +2,7 @@
 
 namespace FantasticBooksBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BookCharacter
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", mappedBy="bookCharacters")
+     */
+    private $books;
+
     /**
      * @var int
      *
@@ -111,6 +117,14 @@ class BookCharacter
      * @ORM\Column(name="otherInformations", type="text", nullable=true)
      */
     private $otherInformations;
+
+    /**
+     * BookCharacter constructor.
+     */
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
 
 
     /**
