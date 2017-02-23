@@ -150,8 +150,28 @@ class BookCharacterController extends Controller
 
         $ability = $bookCharacter->getAbility();
         $ability = (explode(",",$ability));
+
         $occupation = $bookCharacter->getOccupation();
         $occupation = (explode(",",$occupation));
+
+        $notHuman = $bookCharacter->getNotHuman();
+        $notHuman = (explode(",",$notHuman));
+
+        $mythology = $bookCharacter->getMythology();
+        $mythology = (explode(",",$mythology));
+
+        $biblicalCharacter = $bookCharacter->getBiblicalCharacter();
+        $biblicalCharacter = (explode(",",$biblicalCharacter));
+
+        $mythologicalCreature = $bookCharacter->getMythologicalCreature();
+        $mythologicalCreature = (explode(",",$mythologicalCreature));
+
+        $animalBeast = $bookCharacter->getAnimalBeast();
+        $animalBeast = (explode(",",$animalBeast));
+
+        $otherCreature = $bookCharacter->getOtherCreature();
+        $otherCreature = (explode(",",$otherCreature));
+
         var_dump($ability);
 //        $editForm = $this->createForm('FantasticBooksBundle\Form\BookCharacterType', $bookCharacter);
 //        $editForm->handleRequest($request);
@@ -172,6 +192,12 @@ class BookCharacterController extends Controller
             'age' => $bookCharacter->getAge(),
             'ability' => $ability,
             'occupation' => $occupation,
+            'notHuman' => $notHuman,
+            'mythology' => $mythology,
+            'biblicalCharacter' => $biblicalCharacter,
+            'mythologicalCreature' => $mythologicalCreature,
+            'animalBeast' => $animalBeast,
+            'otherCreature' => $otherCreature,
 
         ));
 
