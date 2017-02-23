@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class BookCharacter
 {
     /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", mappedBy="bookCharacters")
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", inversedBy="bookCharacters")
      */
     private $books;
 

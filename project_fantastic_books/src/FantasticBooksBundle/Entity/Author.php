@@ -14,14 +14,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Author
 {
     /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", indexBy="authors")
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", mappedBy="authors")
      */
     private $setOfSeries;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", indexBy="authors")
-     */
-    private $books;
 
     /**
      * @var int
@@ -71,7 +66,6 @@ class Author
     public function __construct()
     {
         $this->setOfSeries = new ArrayCollection();
-        $this->books = new ArrayCollection();
     }
 
 

@@ -14,14 +14,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Series
 {
     /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Author", mappedBy="setOfSeries")
-     */
-    private $authors;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", indexBy="setOfSeries")
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", mappedBy="setOfSeries")
      */
     private $books;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Author", inversedBy="setOfSeries")
+     */
+    private $authors;
     /**
      * @var int
      *
@@ -47,8 +47,8 @@ class Series
      */
     public function __construct()
     {
-        $this->authors = new ArrayCollection();
         $this->books = new ArrayCollection();
+        $this->authors = new ArrayCollection();
     }
 
 

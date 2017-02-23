@@ -14,19 +14,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Book
 {
     /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Author", mappedBy="books")
-     */
-    private $authors;
-
-    /**
-     *@ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", mappedBy="books")
-     */
-    private $setOfSeries;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\BookCharacter", indexBy="books")
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\BookCharacter", mappedBy="books")
      */
     private $bookCharacters;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", inversedBy="books")
+     */
+    private $setOfSeries;
 
     /**
      * @var int
@@ -67,9 +62,8 @@ class Book
      */
     public function __construct()
     {
-        $this->authors = new ArrayCollection();
+        $this->bookCharacters = new ArrayCollection();
         $this->setOfSeries = new ArrayCollection();
-        $this->characters = new ArrayCollection();
     }
 
 
@@ -150,22 +144,6 @@ class Book
     public function getTitleOriginal()
     {
         return $this->titleOriginal;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthors()
-    {
-        return $this->authors;
-    }
-
-    /**
-     * @param mixed $authors
-     */
-    public function setAuthors($authors)
-    {
-        $this->authors = $authors;
     }
 
     /**

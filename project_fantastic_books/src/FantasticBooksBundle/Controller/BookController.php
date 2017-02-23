@@ -50,18 +50,6 @@ class BookController extends Controller
             $em = $this->getDoctrine()->getManager();
 
 
-            if (!$book->getSetOfSeries()) {
-                $series = new Series();
-                $book->setSetOfSeries($series);
-                /** @var Author $author */
-                foreach ($book->getAuthors() as $author) {
-                    $author->setSetOfSeries($series);
-
-                    $em->persist($author);
-                }
-
-                $em->persist($series);
-            }
 
             $em->persist($book);
             $em->flush();

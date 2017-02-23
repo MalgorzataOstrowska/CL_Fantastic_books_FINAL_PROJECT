@@ -4,6 +4,7 @@ namespace FantasticBooksBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,12 +19,14 @@ class BookType extends AbstractType
             ->add('titlePolish')
             ->add('titleEnglish')
             ->add('titleOriginal')
-            ->add('authors', EntityType::class,
-                ['class' => 'FantasticBooksBundle:Author'])
-            ->add('setOfSeries', EntityType::class,
-                ['class' => 'FantasticBooksBundle:Series'])
-            ->add('bookCharacters', EntityType::class,
-                ['class' => 'FantasticBooksBundle:BookCharacter'])
+            ->add('titleOriginal')
+            ->add('setOfSeries');
+//
+//
+//            ->add('setOfSeries', EntityType::class,
+//                ['class' => 'FantasticBooksBundle:Series'])
+//            ->add('bookCharacters', EntityType::class,
+//                ['class' => 'FantasticBooksBundle:BookCharacter'])
         ;
     }
 

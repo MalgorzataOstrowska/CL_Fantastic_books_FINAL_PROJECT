@@ -18,10 +18,7 @@ class SeriesType extends AbstractType
             ->add('name')
             ->add('authors')
             ->add('books')
-            ->add('authors', EntityType::class,
-                ['class' => 'FantasticBooksBundle:Author'])
-            ->add('books', EntityType::class,
-                ['class' => 'FantasticBooksBundle:Book'])
+
         ;
     }
     
