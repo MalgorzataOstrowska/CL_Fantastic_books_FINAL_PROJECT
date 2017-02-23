@@ -176,4 +176,38 @@ class Author
     {
         return $this->linkToHomePage;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSetOfSeries()
+    {
+        return $this->setOfSeries;
+    }
+
+    /**
+     * @param mixed $setOfSeries
+     */
+    public function setSetOfSeries($setOfSeries)
+    {
+        $this->setOfSeries = $setOfSeries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param mixed $books
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+    }
+
+
 }

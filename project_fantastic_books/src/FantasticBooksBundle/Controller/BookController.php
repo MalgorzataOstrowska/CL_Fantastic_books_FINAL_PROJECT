@@ -2,10 +2,13 @@
 
 namespace FantasticBooksBundle\Controller;
 
+use FantasticBooksBundle\Entity\Author;
 use FantasticBooksBundle\Entity\Book;
+use FantasticBooksBundle\Entity\Series;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Book controller.
@@ -45,8 +48,23 @@ class BookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+
+            if (!$book->getSetOfSeries()) {
+                $series = new Series();
+                $book->setSetOfSeries($series);
+                /** @var Author $author */
+                foreach ($book->getAuthors() as $author) {
+                    $author->setSetOfSeries($series);
+
+                    $em->persist($author);
+                }
+
+                $em->persist($series);
+            }
+
             $em->persist($book);
-            $em->flush($book);
+            $em->flush();
 
             return $this->redirectToRoute('editor_book_show', array('id' => $book->getId()));
         }
@@ -130,7 +148,6 @@ class BookController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('editor_book_delete', array('id' => $book->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
