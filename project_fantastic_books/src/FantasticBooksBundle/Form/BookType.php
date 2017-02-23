@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SeriesType extends AbstractType
+class BookType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,23 +15,25 @@ class SeriesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('authors')
-            ->add('books')
+            ->add('titlePolish')
+            ->add('titleEnglish')
+            ->add('titleOriginal')
             ->add('authors', EntityType::class,
                 ['class' => 'FantasticBooksBundle:Author'])
-            ->add('books', EntityType::class,
-                ['class' => 'FantasticBooksBundle:Book'])
+            ->add('setOfSeries', EntityType::class,
+                ['class' => 'FantasticBooksBundle:Series'])
+            ->add('bookCharacters', EntityType::class,
+                ['class' => 'FantasticBooksBundle:BookCharacter'])
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FantasticBooksBundle\Entity\Series'
+            'data_class' => 'FantasticBooksBundle\Entity\Book'
         ));
     }
 
@@ -40,7 +42,7 @@ class SeriesType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'fantasticbooksbundle_series';
+        return 'fantasticbooksbundle_book';
     }
 
 

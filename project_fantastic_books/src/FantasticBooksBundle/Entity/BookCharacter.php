@@ -118,6 +118,10 @@ class BookCharacter
      */
     private $otherInformations;
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
     /**
      * BookCharacter constructor.
      */
@@ -435,4 +439,21 @@ class BookCharacter
     {
         return $this->otherInformations;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param mixed $books
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+    }
+
 }

@@ -58,6 +58,10 @@ class Book
      */
     private $titleOriginal;
 
+    public function __toString()
+    {
+        return $this->getTitlePolish() . '; ' . $this->getTitleOriginal();
+    }
     /**
      * Book constructor.
      */
@@ -147,4 +151,53 @@ class Book
     {
         return $this->titleOriginal;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
+
+    /**
+     * @param mixed $authors
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSetOfSeries()
+    {
+        return $this->setOfSeries;
+    }
+
+    /**
+     * @param mixed $setOfSeries
+     */
+    public function setSetOfSeries($setOfSeries)
+    {
+        $this->setOfSeries = $setOfSeries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBookCharacters()
+    {
+        return $this->bookCharacters;
+    }
+
+    /**
+     * @param mixed $bookCharacters
+     */
+    public function setBookCharacters($bookCharacters)
+    {
+        $this->bookCharacters = $bookCharacters;
+    }
+
 }

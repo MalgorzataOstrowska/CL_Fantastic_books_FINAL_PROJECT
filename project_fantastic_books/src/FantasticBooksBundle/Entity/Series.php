@@ -38,6 +38,10 @@ class Series
      */
     private $name;
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
     /**
      * Series constructor.
      */
