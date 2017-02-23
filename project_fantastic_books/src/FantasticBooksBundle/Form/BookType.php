@@ -20,6 +20,7 @@ class BookType extends AbstractType
             ->add('titleEnglish')
             ->add('titleOriginal')
             ->add('titleOriginal')
+            ->add('bookCharacters')
             ->add('setOfSeries');
 //
 //
