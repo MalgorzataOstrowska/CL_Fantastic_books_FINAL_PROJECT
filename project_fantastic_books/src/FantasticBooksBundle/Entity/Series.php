@@ -19,6 +19,10 @@ class Series
     private $authors;
 
     /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Book", indexBy="setOfSeries")
+     */
+    private $books;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -40,6 +44,7 @@ class Series
     public function __construct()
     {
         $this->authors = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
 
