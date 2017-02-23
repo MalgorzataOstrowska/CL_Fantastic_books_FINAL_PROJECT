@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * BookCharacter
  *
- * @ORM\Table(name="book_character")
+ * @ORM\Table(name="character_from_book")
  * @ORM\Entity(repositoryClass="FantasticBooksBundle\Repository\BookCharacterRepository")
  */
 class BookCharacter
