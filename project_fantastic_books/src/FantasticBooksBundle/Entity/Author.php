@@ -2,6 +2,7 @@
 
 namespace FantasticBooksBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Author
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="FantasticBooksBundle\Entity\Series", indexBy="authors")
+     */
+    private $setOfSeries;
+
+
     /**
      * @var int
      *
@@ -48,6 +55,14 @@ class Author
      * @ORM\Column(name="linkToHomePage", type="string", length=255, nullable=true)
      */
     private $linkToHomePage;
+
+    /**
+     * Author constructor.
+     */
+    public function __construct()
+    {
+        $this->setOfSeries = new ArrayCollection();
+    }
 
 
     /**
