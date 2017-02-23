@@ -60,6 +60,11 @@ class Author
      */
     private $linkToHomePage;
 
+    public function __toString()
+    {
+        return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
     /**
      * Author constructor.
      */

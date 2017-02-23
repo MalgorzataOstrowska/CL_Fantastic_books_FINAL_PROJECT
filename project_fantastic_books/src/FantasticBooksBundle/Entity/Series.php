@@ -80,4 +80,38 @@ class Series
     {
         return $this->name;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
+
+    /**
+     * @param mixed $authors
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param mixed $books
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+    }
+
+
 }
