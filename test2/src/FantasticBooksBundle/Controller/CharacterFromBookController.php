@@ -39,22 +39,22 @@ class CharacterFromBookController extends Controller
      */
     public function newAction(Request $request)
     {
-        $characterFromBook = new Characterfrombook();
-        $form = $this->createForm('FantasticBooksBundle\Form\CharacterFromBookType', $characterFromBook);
-        $form->handleRequest($request);
+        if ($request->isMethod(Request::METHOD_POST)) {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($characterFromBook);
-            $em->flush($characterFromBook);
+            $bookCharacter = new CharacterFromBook();
 
-            return $this->redirectToRoute('editor_characterfrombook_show', array('id' => $characterFromBook->getId()));
+            $newId = $this->saveBookCharacter($request, $bookCharacter);
+
+            return $this->redirectToRoute('editor_characterfrombook_show',
+                [
+                    'id' => $newId
+                ]
+            );
         }
 
-        return $this->render('characterfrombook/new.html.twig', array(
-            'characterFromBook' => $characterFromBook,
-            'form' => $form->createView(),
-        ));
+        return $this->render('characterfrombook/new.html.twig', [
+            'form_address' => $this->generateUrl('editor_characterfrombook_new')
+        ]);
     }
 
     /**
@@ -79,23 +79,68 @@ class CharacterFromBookController extends Controller
      * @Route("/{id}/edit", name="editor_characterfrombook_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, CharacterFromBook $characterFromBook)
+    public function editAction(Request $request, CharacterFromBook $characterFromBook, $id)
     {
-        $deleteForm = $this->createDeleteForm($characterFromBook);
-        $editForm = $this->createForm('FantasticBooksBundle\Form\CharacterFromBookType', $characterFromBook);
-        $editForm->handleRequest($request);
+        if ($request->isMethod(Request::METHOD_POST)) {
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $newId = $this->saveBookCharacter($request, $characterFromBook);
 
-            return $this->redirectToRoute('editor_characterfrombook_edit', array('id' => $characterFromBook->getId()));
+            return $this->redirectToRoute('editor_characterfrombook_show',
+                [
+                    'id' => $newId
+                ]
+            );
         }
 
+        $deleteForm = $this->createDeleteForm($characterFromBook);
+
+
+        $ability = $characterFromBook->getAbility();
+        $ability = (explode(",", $ability));
+
+        $occupation = $characterFromBook->getOccupation();
+        $occupation = (explode(",", $occupation));
+
+        $notHuman = $characterFromBook->getNotHuman();
+        $notHuman = (explode(",", $notHuman));
+
+        $mythology = $characterFromBook->getMythology();
+        $mythology = (explode(",", $mythology));
+
+        $biblicalCharacter = $characterFromBook->getBiblicalCharacter();
+        $biblicalCharacter = (explode(",", $biblicalCharacter));
+
+        $mythologicalCreature = $characterFromBook->getMythologicalCreature();
+        $mythologicalCreature = (explode(",", $mythologicalCreature));
+
+        $animalBeast = $characterFromBook->getAnimalBeast();
+        $animalBeast = (explode(",", $animalBeast));
+
+        $otherCreature = $characterFromBook->getOtherCreature();
+        $otherCreature = (explode(",", $otherCreature));
+
+
+        $this->getDoctrine()->getManager()->flush();
+
         return $this->render('characterfrombook/edit.html.twig', array(
-            'characterFromBook' => $characterFromBook,
-            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'form_address' => $this->generateUrl('editor_characterfrombook_edit', [
+                'id' => $id
+            ]),
+            'name' => $characterFromBook->getName(),
+            'gender' => $characterFromBook->getGender(),
+            'species' => $characterFromBook->getSpecies(),
+            'age' => $characterFromBook->getAge(),
+            'ability' => $ability,
+            'occupation' => $occupation,
+            'notHuman' => $notHuman,
+            'mythology' => $mythology,
+            'biblicalCharacter' => $biblicalCharacter,
+            'mythologicalCreature' => $mythologicalCreature,
+            'animalBeast' => $animalBeast,
+            'otherCreature' => $otherCreature,
         ));
+
     }
 
     /**
@@ -133,4 +178,77 @@ class CharacterFromBookController extends Controller
             ->getForm()
         ;
     }
+
+    private function saveBookCharacter(Request $request, CharacterFromBook $bookCharacter){
+        $name = $request->get('name');
+        $bookCharacter->setName($name);
+
+        $gender = $request->get('gender');
+        $bookCharacter->setGender($gender);
+
+        $species = $request->get('species');
+        $bookCharacter->setSpecies($species);
+
+        $age = $request->get('age');
+        $bookCharacter->setAge($age);
+
+        $ability = $request->get('ability');
+        if (is_array($ability)) {
+            $ability = implode(",", $ability);
+        }
+        $bookCharacter->setAbility($ability);
+
+        $occupation = $request->get('occupation');
+        if (is_array($occupation)) {
+            $occupation = implode(",", $occupation);
+        }
+        $bookCharacter->setOccupation($occupation);
+
+        $notHuman = $request->get('notHuman');
+        if (is_array($notHuman)) {
+            $notHuman = implode(",", $notHuman);
+        }
+        $bookCharacter->setNotHuman($notHuman);
+
+        $mythology = $request->get('mythology');
+        if (is_array($mythology)) {
+            $mythology = implode(",", $mythology);
+        }
+        $bookCharacter->setMythology($mythology);
+
+        $biblicalCharacter = $request->get('biblicalCharacter');
+        if (is_array($biblicalCharacter)) {
+            $biblicalCharacter = implode(",", $biblicalCharacter);
+        }
+        $bookCharacter->setBiblicalCharacter($biblicalCharacter);
+
+        $mythologicalCreature = $request->get('mythologicalCreature');
+        if (is_array($mythologicalCreature)) {
+            $mythologicalCreature = implode(",", $mythologicalCreature);
+        }
+        $bookCharacter->setMythologicalCreature($mythologicalCreature);
+
+        $animalBeast = $request->get('animalBeast');
+        if (is_array($animalBeast)) {
+            $animalBeast = implode(",", $animalBeast);
+        }
+        $bookCharacter->setAnimalBeast($animalBeast);
+
+        $otherCreature = $request->get('otherCreature');
+        if (is_array($otherCreature)) {
+            $otherCreature = implode(",", $otherCreature);
+        }
+        $bookCharacter->setOtherCreature($otherCreature);
+
+        $otherInformation = $request->get('otherInformation');
+        $bookCharacter->setOtherInformations($otherInformation);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($bookCharacter);
+        $em->flush($bookCharacter);
+
+        return $bookCharacter->getId();
+    }
+
 }
+

@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Characterfrombooks list</h1>
+{% block sidenav %}
+    <a href="{{ path('editor_bookcharacter_new') }}">Create a new bookCharacter</a>
+{% endblock %}
 
-    <table>
+{% block body %}
+    <h1>Bookcharacters list</h1>
+
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -24,29 +28,29 @@
             </tr>
         </thead>
         <tbody>
-        {% for characterFromBook in characterFromBooks %}
+        {% for bookCharacter in bookCharacters %}
             <tr>
-                <td><a href="{{ path('editor_characterfrombook_show', { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
-                <td>{{ characterFromBook.name }}</td>
-                <td>{{ characterFromBook.gender }}</td>
-                <td>{{ characterFromBook.species }}</td>
-                <td>{{ characterFromBook.age }}</td>
-                <td>{{ characterFromBook.ability }}</td>
-                <td>{{ characterFromBook.occupation }}</td>
-                <td>{{ characterFromBook.notHuman }}</td>
-                <td>{{ characterFromBook.mythology }}</td>
-                <td>{{ characterFromBook.biblicalCharacter }}</td>
-                <td>{{ characterFromBook.mythologicalCreature }}</td>
-                <td>{{ characterFromBook.animalBeast }}</td>
-                <td>{{ characterFromBook.otherCreature }}</td>
-                <td>{{ characterFromBook.otherInformations }}</td>
+                <td><a href="{{ path('editor_bookcharacter_show', { 'id': bookCharacter.id }) }}">{{ bookCharacter.id }}</a></td>
+                <td>{{ bookCharacter.name }}</td>
+                <td>{{ bookCharacter.gender }}</td>
+                <td>{{ bookCharacter.species }}</td>
+                <td>{{ bookCharacter.age }}</td>
+                <td>{{ bookCharacter.ability }}</td>
+                <td>{{ bookCharacter.occupation }}</td>
+                <td>{{ bookCharacter.notHuman }}</td>
+                <td>{{ bookCharacter.mythology }}</td>
+                <td>{{ bookCharacter.biblicalCharacter }}</td>
+                <td>{{ bookCharacter.mythologicalCreature }}</td>
+                <td>{{ bookCharacter.animalBeast }}</td>
+                <td>{{ bookCharacter.otherCreature }}</td>
+                <td>{{ bookCharacter.otherInformations }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('editor_characterfrombook_show', { 'id': characterFromBook.id }) }}">show</a>
+                            <a href="{{ path('editor_bookcharacter_show', { 'id': bookCharacter.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('editor_characterfrombook_edit', { 'id': characterFromBook.id }) }}">edit</a>
+                            <a href="{{ path('editor_bookcharacter_edit', { 'id': bookCharacter.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -55,9 +59,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_characterfrombook_new') }}">Create a new characterFromBook</a>
-        </li>
-    </ul>
 {% endblock %}

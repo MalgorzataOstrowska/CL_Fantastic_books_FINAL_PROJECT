@@ -1,16 +1,694 @@
-{% extends 'base.html.twig' %}
-
+{% extends "::base.html.twig" %}
 {% block body %}
-    <h1>Characterfrombook creation</h1>
+    <h2>{{ 'Character'| trans }}:</h2>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <form action="{{ form_address }}" method="POST">
+        <div class="form-group">
+            <h3>{{ 'name.Name'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label><input type="text" name="name" id="name"
+                                  value="{{ name|default('') }}"></label>
+                </div>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_characterfrombook_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <div class="form-group">
+            <h3>{{ 'gender.Gender'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="gender" id="female" value="female"
+                                {% block gender_female %}{% endblock %}>
+                        {{ 'gender.female'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="gender" id="male" value="male"
+                                {% block gender_male %}{% endblock %}>
+                        {{ 'gender.male'| trans }}
+                    </label>
+                </div>
+
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="gender" id="other" value="other"
+                                {% block gender_other %}{% endblock %}>
+                        {{ 'gender.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'species.Species'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="human" value="human"
+                                {% block species_human %}{% endblock %}>
+                        {{ 'species.human'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="shapeshifter" value="shapeshifter"
+                                {% block species_shapeshifter %}{% endblock %}>
+                        {{ 'species.shapeshifter'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="notHuman" value="notHuman"
+                                {% block species_notHuman %}{% endblock %}>
+                        {{ 'species.not human'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="childOfHumanAndNotHuman"
+                               value="childOfHumanAndNotHuman"
+                                {% block species_childOfHumanAndNotHuman %}{% endblock %}>
+                        {{ 'species.child of human and not human'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="childOfDifferentNotHumans"
+                               value="childOfDifferentNotHumans"
+                                {% block species_childOfDifferentNotHumans %}{% endblock %}>
+                        {{ 'species.child of different not humans'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="species" id="other" value="other"
+                                {% block species_other %}{% endblock %}>
+                        {{ 'species.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'age.Age'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="age" id="child" value="child"
+                                {% block age_child %}{% endblock %}>
+                        {{ 'age.child'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="age" id="teenager" value="teenager"
+                                {% block age_teenager %}{% endblock %}>
+                        {{ 'age.teenager'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                        <label>
+                            <input type="radio" name="age" id="adult" value="adult"
+                                    {% block age_adult %}{% endblock %}>
+                            {{ 'age.adult'| trans }}
+                        </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="age" id="ancient" value="ancient"
+                                {% block age_ancient %}{% endblock %}>
+                        {{ 'age.ancient'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="radio" name="age" id="otherAge" value="otherAge"
+                                {% block age_otherAge %}{% endblock %}>
+                        {{ 'age.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'ability.Abilities'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="magic" value="magic"
+                                {% block ability_magic %}{% endblock %}>
+                        {{ 'ability.magic'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="flying" value="flying"
+                                {% block ability_flying %}{% endblock %}>
+                        {{ 'ability.flying'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="teleportation"
+                               value="teleportation"
+                                {% block ability_teleportation %}{% endblock %}>
+                        {{ 'ability.teleportation'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="telekinesis"
+                               value="telekinesis"
+                        {% block ability_telekinesis %}{% endblock %}>
+                        {{ 'ability.telekinesis'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="invisibility"
+                               value="invisibility"
+                                {% block ability_invisibility %}{% endblock %}>
+                        {{ 'ability.invisibility'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="telepathy"
+                               value="telepathy"
+                                {% block ability_telepathy %}{% endblock %}>
+                        {{ 'ability.telepathy'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="foreseeFuture"
+                               value="foreseeFuture"
+                                {% block ability_foreseeFuture %}{% endblock %}>
+                        {{ 'ability.foresee future'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]" id="seeingPast"
+                               value="seeingPast"
+                                {% block ability_seeingPast %}{% endblock %}>
+                        {{ 'ability.seeing past'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="ability[]"
+                               id="otherAbility" value="otherAbility"
+                                {% block ability_otherAbility %}{% endblock %}>
+                        {{ 'ability.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'occupation.Occupation'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="warrior" value="warrior"
+                                {% block occupation_warrior %}{% endblock %}>
+                        {{ 'occupation.warrior'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="hunter" value="hunter"
+                                {% block occupation_hunter %}{% endblock %}>
+                        {{ 'occupation.hunter'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="policeman" value="policeman"
+                                {% block occupation_policeman %}{% endblock %}>
+                        {{ 'occupation.policeman'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="privateEye" value="privateEye"
+                                {% block occupation_privateEye %}{% endblock %}>
+                        {{ 'occupation.private eye'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                        <label>
+                            <input type="checkbox" name="occupation[]" id="killer" value="killer"
+                                    {% block occupation_killer %}{% endblock %}>
+                            {{ 'occupation.killer'| trans }}
+                        </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="thief" value="thief"
+                                {% block occupation_thief %}{% endblock %}>
+                        {{ 'occupation.thief'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="healer" value="healer"
+                                {% block occupation_healer %}{% endblock %}>
+                        {{ 'occupation.healer'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="physician" value="physician"
+                                {% block occupation_physician %}{% endblock %}>
+                        {{ 'occupation.physician'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="scholar" value="scholar"
+                                {% block occupation_scholar %}{% endblock %}>
+                        {{ 'occupation.scholar'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="teacher" value="teacher"
+                                {% block occupation_teacher %}{% endblock %}>
+                        {{ 'occupation.teacher'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="student" value="student"
+                                {% block occupation_student %}{% endblock %}>
+                        {{ 'occupation.student'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="pupil" value="pupil"
+                                {% block occupation_pupil %}{% endblock %}>
+                        {{ 'occupation.pupil'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="journalist" value="journalist"
+                                {% block occupation_journalist %}{% endblock %}>
+                        {{ 'occupation.journalist'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="broker" value="broker"
+                                {% block occupation_broker %}{% endblock %}>
+                        {{ 'occupation.broker'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="architect" value="architect"
+                                {% block occupation_architect %}{% endblock %}>
+                        {{ 'occupation.architect'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="bard" value="bard"
+                                {% block occupation_bard %}{% endblock %}>
+                        {{ 'occupation.bard'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="musician" value="musician"
+                                {% block occupation_musician %}{% endblock %}>
+                        {{ 'occupation.musician'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="actor" value="actor"
+                                {% block occupation_actor %}{% endblock %}>
+                        {{ 'occupation.actor'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="carMechanic" value="carMechanic"
+                                {% block occupation_carMechanic %}{% endblock %}>
+                        {{ 'occupation.car mechanic'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="cook" value="cook"
+                                {% block occupation_cook %}{% endblock %}>
+                        {{ 'occupation.cook'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="occupation[]" id="otherOccupation"
+                               value="otherOccupation"
+                                {% block occupation_otherOccupation %}{% endblock %}>
+                        {{ 'occupation.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'notHuman.Not human'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="notHuman[]" id="biblicalCharacter"
+                               value="biblicalCharacter"
+                                {% block notHuman_biblicalCharacter %}{% endblock %}>
+                        {{ 'notHuman.biblical character'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="notHuman[]" id="mythologicalCreature"
+                                  value="mythologicalCreature"
+                                {% block notHuman_mythologicalCreature %}{% endblock %}>
+                        {{ 'notHuman.mythological character'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="notHuman[]" id="otherNotHuman"
+                               value="otherNotHuman"
+                                {% block notHuman_otherNotHuman %}{% endblock %}>
+                        {{ 'notHuman.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'mythology.Mythology'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="celtic" value="celtic"
+                                {% block mythology_celtic %}{% endblock %}>
+                        {{ 'mythology.celtic'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="egyptian" value="egyptian"
+                                {% block mythology_egyptian %}{% endblock %}>
+                        {{ 'mythology.egyptian'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="greek" value="greek"
+                                {% block mythology_greek %}{% endblock %}>
+                        {{ 'mythology.greek'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="indian" value="indian"
+                                {% block mythology_indian %}{% endblock %}>
+                        {{ 'mythology.indian'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="norse" value="norse"
+                                {% block mythology_norse %}{% endblock %}>
+                        {{ 'mythology.norse'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="roman" value="roman"
+                                {% block mythology_roman %}{% endblock %}>
+                        {{ 'mythology.roman'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="slavic" value="slavic"
+                                {% block mythology_slavic %}{% endblock %}>
+                        {{ 'mythology.slavic'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythology[]" id="otherMythology"
+                               value="otherMythology"
+                                {% block mythology_otherMythology %}{% endblock %}>
+                        {{ 'mythology.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'biblicalCharacter.Biblical character'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="biblicalCharacter[]" id="angel" value="angel"
+                                {% block biblicalCharacter_angel %}{% endblock %}>
+                        {{ 'biblicalCharacter.angel'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="biblicalCharacter[]" id="devil" value="devil"
+                                {% block biblicalCharacter_devil %}{% endblock %}>
+                        {{ 'biblicalCharacter.devil'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="biblicalCharacter[]" id="demon" value="demon"
+                                {% block biblicalCharacter_demon %}{% endblock %}>
+                        {{ 'biblicalCharacter.demon'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="biblicalCharacter[]"
+                               id="otherBiblicalCharacters" value="otherBiblicalCharacters"
+                                {% block biblicalCharacter_otherBiblicalCharacters %}{% endblock %}>
+                        {{ 'biblicalCharacter.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'mythologicalCreature.Mythological creature'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="god" value="god"
+                                {% block mythologicalCreature_god %}{% endblock %}>
+                        {{ 'mythologicalCreature.god'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="demigod" value="demigod"
+                                {% block mythologicalCreature_demigod %}{% endblock %}>
+                        {{ 'mythologicalCreature.demigod'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="nymph" value="nymph"
+                                {% block mythologicalCreature_nymph %}{% endblock %}>
+                        {{ 'mythologicalCreature.nymph'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="giant" value="giant"
+                                {% block mythologicalCreature_giant %}{% endblock %}>
+                        {{ 'mythologicalCreature.giant'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="elf" value="elf"
+                                {% block mythologicalCreature_elf %}{% endblock %}>
+                        {{ 'mythologicalCreature.elf'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="dwarf" value="dwarf"
+                                {% block mythologicalCreature_dwarf %}{% endblock %}>
+                        {{ 'mythologicalCreature.dwarf'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="troll" value="troll"
+                                {% block mythologicalCreature_troll %}{% endblock %}>
+                        {{ 'mythologicalCreature.troll'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]" id="orc" value="orc"
+                                {% block mythologicalCreature_orc %}{% endblock %}>
+                        {{ 'mythologicalCreature.orc'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="mythologicalCreature[]"
+                               id="otherMythologicalCreatures" value="otherMythologicalCreatures"
+                                {% block mythologicalCreature_otherMythologicalCreatures %}{% endblock %}>
+                        {{ 'mythologicalCreature.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'animalBeast.Animal/Beast'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="dragon" value="dragon"
+                                {% block animalBeast_dragon %}{% endblock %}>
+                        {{ 'animalBeast.dragon'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="griffin" value="griffin"
+                                {% block animalBeast_griffin %}{% endblock %}>
+                        {{ 'animalBeast.griffin'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="harpy" value="harpy"
+                                {% block animalBeast_harpy %}{% endblock %}>
+                        {{ 'animalBeast.harpy'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="thunderbird" value="thunderbird"
+                                {% block animalBeast_thunderbird %}{% endblock %}>
+                        {{ 'animalBeast.thunderbird'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="wolf" value="wolf"
+                                {% block animalBeast_wolf %}{% endblock %}>
+                        {{ 'animalBeast.wolf'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="bear" value="bear"
+                                {% block animalBeast_bear %}{% endblock %}>
+                        {{ 'animalBeast.bear'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="coyote" value="coyote"
+                                {% block animalBeast_coyote %}{% endblock %}>
+                        {{ 'animalBeast.coyote'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]" id="hyena" value="hyena"
+                                {% block animalBeast_hyena %}{% endblock %}>
+                        {{ 'animalBeast.hyena'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="animalBeast[]"
+                               id="otherAnimalBeastCreatures" value="otherAnimalBeastCreatures"
+                                {% block animalBeast_otherAnimalBeastCreatures %}{% endblock %}>
+                        {{ 'animalBeast.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'otherCreature.Other creature'| trans }}:</h3>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="otherCreature[]" id="vampire" value="vampire"
+                                {% block otherCreature_vampire %}{% endblock %}>
+                        {{ 'otherCreature.vampire'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="otherCreature[]" id="zombie" value="zombie"
+                                {% block otherCreature_zombie %}{% endblock %}>
+                        {{ 'otherCreature.zombie'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="otherCreature[]" id="alien" value="alien"
+                                {% block otherCreature_alien %}{% endblock %}>
+                        {{ 'otherCreature.alien'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="otherCreature[]" id="hobbit" value="hobbit"
+                                {% block otherCreature_hobbit %}{% endblock %}>
+                        {{ 'otherCreature.hobbit'| trans }}
+                    </label>
+                </div>
+                <div class="col-sm-2">
+                    <label>
+                        <input type="checkbox" name="otherCreature[]"
+                               id="otherCreature" value="otherCreature"
+                                {% block otherCreature_otherCreature %}{% endblock %}>
+                        {{ 'otherCreature.other'| trans }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>{{ 'otherInformation.Other information'| trans }}:</h3>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" name="otherInformation"
+                                  id="otherInformation"></textarea>
+                </div>
+        </div>
+        {% block submitAdd %}
+            <button type="submit" name="submit" value="add">Add <i class="fa fa-book"></i></button>
+        {% endblock %}
+
+        {% block submitEdit %}
+        {% endblock %}
+
+    </form>
+
+    {% block buttonsBlock %}
+    {% endblock %}
+
 {% endblock %}
