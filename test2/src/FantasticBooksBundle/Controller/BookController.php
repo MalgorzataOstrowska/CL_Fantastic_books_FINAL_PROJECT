@@ -2,7 +2,9 @@
 
 namespace FantasticBooksBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FantasticBooksBundle\Entity\Book;
+use FantasticBooksBundle\Entity\CharacterFromBook;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -45,8 +47,15 @@ class BookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            /** @var CharacterFromBook $character */
+            foreach ($book->getCharacters() as $character) {
+                $character->getBooks()->add($book);
+                $em->persist($character);
+            }
+
             $em->persist($book);
-            $em->flush($book);
+            $em->flush();
 
             return $this->redirectToRoute('editor_book_show', array('id' => $book->getId()));
         }
