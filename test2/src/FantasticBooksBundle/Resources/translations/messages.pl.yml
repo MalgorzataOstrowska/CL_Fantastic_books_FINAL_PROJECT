@@ -1,0 +1,126 @@
+Character: Bohater
+index: indeks
+new: dodaj
+
+name:
+  Name: Imię
+
+gender:
+  Gender: Płeć
+  female: kobieta
+  male: mężczyzna
+  other: inna
+
+species:
+  Species: Gatunek
+  human: człowiek
+  child of human and not human:  dziecko człowieka i nieczłowieka
+  not human: nieczłowiek
+  child of different not humans: dziecko różnych nieludzi
+  shapeshifter: zmiennokształtny
+  other: inny
+
+age:
+  Age: Wiek
+  child: dziecko
+  teenager: nastolatek
+  adult: dorosły
+  ancient: starożytny
+  other: inny
+
+occupation:
+  Occupation: Zawód
+  warrior: wojownik
+  hunter: łowca
+  killer: zabójca
+  thief: złodziej
+  healer: uzdrowiciel
+  physician: lekarz
+  scholar: uczony
+  teacher: nauczyciel
+  student: student
+  pupil: uczeń
+  policeman: policjant
+  private eye: prywatny detektyw
+  journalist: dziennikarz
+  broker: makler
+  architect: architekt
+  bard: bard
+  musician: muzyk
+  actor: aktor
+  car mechanic: mechanik samochodowy
+  cook: kucharz
+  other: inny
+
+notHuman:
+  Not human: Nieczłowiek
+  biblical character: postać biblijna
+  mythological character: postać mitologiczna
+  other: inna
+
+biblicalCharacter:
+  Biblical character: Postać biblijna
+  angel: anioł
+  devil: diabeł
+  demon: demon
+  other: inna
+
+mythology:
+  Mythology: Mitologia
+  celtic: celtycka
+  egyptian: egipska
+  greek: grecka
+  norse: nordycka
+  roman: rzymska
+  slavic: słowiańska
+  other: inna
+  indian: indiańska
+
+mythologicalCreature:
+  Mythological creature: Postać mitologiczna
+  god: bóg
+  demigod: półbóg
+  nymph: nimfa
+  giant: olbrzym
+  elf: elf
+  dwarf: krasnolud
+  troll: troll
+  orc: ork
+  other: inne
+
+animalBeast:
+  Animal/Beast: Zwierzę/Bestia
+  dragon: smok
+  griffin: gryf
+  harpy: harpia
+  thunderbird: ptaki grzmot
+  wolf: wilk
+  bear: niedźwiedź
+  coyote: kojot
+  hyena: hiena
+
+  other: inne
+
+otherCreature:
+  Other creature: Inna istota
+  vampire: wampir
+  zombie: zombi
+  hobbit: niziołek
+  alien: kosmita
+  other: inna
+
+ability:
+  Abilities: Zdolności
+  magic: magia
+  flying: latanie
+  teleportation: teleportacja
+  telekinesis: telekineza
+  invisibility: niewidzialność
+  telepathy: telepatia
+  foresee future: przewidzenia przyszłości
+  seeing past: widzenie przeszłości
+  other: inne
+
+otherInformation:
+  Other information: Inne informacje
+
