@@ -3,6 +3,7 @@
 namespace FantasticBooksBundle\Controller;
 
 use FantasticBooksBundle\Entity\Author;
+use FantasticBooksBundle\Entity\Book;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -45,8 +46,15 @@ class AuthorController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            /** @var Book $book */
+            foreach ($author->getBooks() as $book) {
+                $book->getAuthors()->add($author);
+                $em->persist($book);
+            }
+
             $em->persist($author);
-            $em->flush($author);
+            $em->flush();
 
             return $this->redirectToRoute('editor_author_show', array('id' => $author->getId()));
         }

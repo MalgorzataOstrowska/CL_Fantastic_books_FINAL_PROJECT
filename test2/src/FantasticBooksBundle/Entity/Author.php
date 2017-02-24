@@ -2,6 +2,7 @@
 
 namespace FantasticBooksBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Author
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="Book", mappedBy="authors")
+     */
+    private $books;
+
     /**
      * @var int
      *
@@ -49,6 +55,29 @@ class Author
      */
     private $linkToHomePage;
 
+    /**
+     * Author constructor.
+     */
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * @param mixed $books
+     */
+    public function setBooks($books)
+    {
+        $this->books = $books;
+    }
 
     /**
      * Get id

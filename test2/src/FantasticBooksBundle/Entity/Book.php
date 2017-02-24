@@ -19,6 +19,11 @@ class Book
     private $characters;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Author", inversedBy="books")
+     */
+    private $authors;
+
+    /**
      * @return mixed
      */
     public function getCharacters()
@@ -84,6 +89,27 @@ class Book
     public function __construct()
     {
         $this->characters = new ArrayCollection();
+        $this->authors = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitlePolish() . ' - ' . $this->getTitleOriginal();
+    }
+    /**
+     * @return mixed
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
+
+    /**
+     * @param mixed $authors
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
     }
 
 
