@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block sidenav %}
-    <a href="{{ path('editor_author_index') }}">Back to the list</a>
-{% endblock %}
+
 {% block body %}
     <h1>Author creation</h1>
 
@@ -10,4 +8,9 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
+    <ul>
+        <li>
+            <a href="{{ path('editor_author_index') }}">Back to the list</a>
+        </li>
+    </ul>
 {% endblock %}
