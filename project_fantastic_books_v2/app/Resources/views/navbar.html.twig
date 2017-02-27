@@ -21,6 +21,23 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">
+                        {{ 'Author'| trans }}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path('editor_author_index') }}">
+                                {{ 'index'| trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editor_author_new') }}">
+                                {{ 'new'| trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         {{ 'Books'| trans }}
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
