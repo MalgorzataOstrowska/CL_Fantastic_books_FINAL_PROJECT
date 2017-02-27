@@ -17,9 +17,21 @@ class SearchController extends Controller
         if ($request->isMethod(Request::METHOD_POST)) {
 
             $name = $request->get('name');
+            
             $gender = $request->get('gender');
+            if(is_null($gender)){
+                $gender = '%';
+            }
+
             $species = $request->get('species');
+            if(is_null($species)){
+                $species = '%';
+            }
+
             $age = $request->get('age');
+            if(is_null($age)){
+                $age = '%';
+            }
 
             $em = $this->getDoctrine()->getManager();
 
