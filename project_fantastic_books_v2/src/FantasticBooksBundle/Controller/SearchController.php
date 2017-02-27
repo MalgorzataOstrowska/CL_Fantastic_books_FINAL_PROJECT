@@ -25,9 +25,9 @@ class SearchController extends Controller
             $query = $em->createQuery(
                 'SELECT p
                 FROM FantasticBooksBundle:CharacterFromBook p WHERE
-                p.name = :name
+                p.name LIKE :name
                 ORDER BY p.name DESC'
-            )->setParameter('name', $name);
+            )->setParameter('name', '%'.$name.'%');
 
             $characterFromBooks = $query->getResult();
 
