@@ -1,4 +1,0 @@
-services:
-#    fantastic_books.example:
-#        class: FantasticBooksBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
