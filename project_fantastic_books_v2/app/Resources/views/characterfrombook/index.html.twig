@@ -30,7 +30,8 @@
         <tbody>
         {% for characterFromBook in characterFromBooks %}
             <tr>
-                <td><a href="{{ path('editor_characterfrombook_show', { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
+                <td><a href="{{ path('editor_characterfrombook_show',
+                    { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
                 <td>{{ characterFromBook.name }}</td>
                 <td>{{ characterFromBook.gender }}</td>
                 <td>{{ characterFromBook.species }}</td>
@@ -47,10 +48,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('editor_characterfrombook_show', { 'id': characterFromBook.id }) }}">show</a>
+                            <a href="{{ path('editor_characterfrombook_show',
+                            { 'id': characterFromBook.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('editor_characterfrombook_edit', { 'id': characterFromBook.id }) }}">edit</a>
+                            <a href="{{ path('editor_characterfrombook_edit',
+                            { 'id': characterFromBook.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

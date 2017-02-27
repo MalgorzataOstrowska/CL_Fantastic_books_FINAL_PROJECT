@@ -17,17 +17,27 @@ class SearchController extends Controller
         if ($request->isMethod(Request::METHOD_POST)) {
 
             $name = $request->get('name');
-
+            $gender = $request->get('gender');
+            $species = $request->get('species');
+            $age = $request->get('age');
 
             $em = $this->getDoctrine()->getManager();
-
 
             $query = $em->createQuery(
                 'SELECT p
                 FROM FantasticBooksBundle:CharacterFromBook p WHERE
                 p.name LIKE :name
+                AND 
+                p.gender LIKE :gender
+                AND 
+                p.species LIKE :species
+                AND 
+                p.age LIKE :age
                 ORDER BY p.name DESC'
-            )->setParameter('name', '%'.$name.'%');
+            )->setParameter('name', '%'.$name.'%')
+            ->setParameter('gender', $gender)
+            ->setParameter('species', $species)
+            ->setParameter('age', $age);
 
             $characterFromBooks = $query->getResult();
 
