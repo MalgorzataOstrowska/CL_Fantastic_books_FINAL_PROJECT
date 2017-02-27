@@ -12,7 +12,17 @@ class SearchController extends Controller
      */
     public function searchCharacterAction()
     {
-        return $this->render('FantasticBooksBundle:Search:search_character.html.twig', array(
+        return $this->render('FantasticBooksBundle:Search:search_character.html.twig',  [
+            'form_address' => $this->generateUrl('fantasticbooks_search_searchcharacter')
+        ]);
+    }
+
+    /**
+     * @Route("/showCharacter")
+     */
+    public function showCharacterAction()
+    {
+        return $this->render('FantasticBooksBundle:Search:show_character.html.twig', array(
             // ...
         ));
     }
