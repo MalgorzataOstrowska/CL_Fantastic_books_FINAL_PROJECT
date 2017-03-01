@@ -17,7 +17,7 @@ class SearchController extends Controller
         if ($request->isMethod(Request::METHOD_POST)) {
 
             $name = $request->get('name');
-            
+
             $gender = $request->get('gender');
             if(is_null($gender)){
                 $gender = '%';
@@ -33,6 +33,11 @@ class SearchController extends Controller
                 $age = '%';
             }
 
+            $ability = $request->get('ability');
+            if (is_array($ability)) {
+                $ability = implode(".*", $ability);
+            }
+
             $em = $this->getDoctrine()->getManager();
 
             $query = $em->createQuery(
@@ -45,11 +50,14 @@ class SearchController extends Controller
                 p.species LIKE :species
                 AND 
                 p.age LIKE :age
-                ORDER BY p.name DESC'
+                AND
+                REGEXP(p.ability, :ability) = true
+                ORDER BY p.name ASC'
             )->setParameter('name', '%'.$name.'%')
             ->setParameter('gender', $gender)
             ->setParameter('species', $species)
-            ->setParameter('age', $age);
+            ->setParameter('age', $age)
+            ->setParameter('ability', $ability);
 
             $characterFromBooks = $query->getResult();
 
