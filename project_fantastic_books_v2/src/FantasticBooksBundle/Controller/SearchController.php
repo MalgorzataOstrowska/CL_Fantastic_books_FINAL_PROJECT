@@ -34,9 +34,14 @@ class SearchController extends Controller
             }
 
             $ability = $request->get('ability');
-            if (is_array($ability)) {
+            if(is_null($ability)){
+                $ability = '.*';
+                $emptyAbility = true;
+            } else if (is_array($ability)) {
                 $ability = implode(".*", $ability);
+                $emptyAbility = false;
             }
+
 
             $em = $this->getDoctrine()->getManager();
 
@@ -51,13 +56,18 @@ class SearchController extends Controller
                 AND 
                 p.age LIKE :age
                 AND
-                REGEXP(p.ability, :ability) = true
+                (
+                    REGEXP(p.ability, :ability) = true
+                    OR 
+                    :emptyAbility = true
+                )
                 ORDER BY p.name ASC'
             )->setParameter('name', '%'.$name.'%')
             ->setParameter('gender', $gender)
             ->setParameter('species', $species)
             ->setParameter('age', $age)
-            ->setParameter('ability', $ability);
+            ->setParameter('ability', $ability)
+            ->setParameter('emptyAbility', $emptyAbility);
 
             $characterFromBooks = $query->getResult();
 
