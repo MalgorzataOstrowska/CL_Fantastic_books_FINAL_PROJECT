@@ -114,9 +114,9 @@ class CharacterFromBook
     /**
      * @var string
      *
-     * @ORM\Column(name="otherInformations", type="text", nullable=true)
+     * @ORM\Column(name="otherInformation", type="text", nullable=true)
      */
-    private $otherInformations;
+    private $otherInformation;
 
     /**
      * CharacterFromBook constructor.
@@ -419,12 +419,12 @@ class CharacterFromBook
     /**
      * Set otherInformations
      *
-     * @param string $otherInformations
+     * @param string $otherInformation
      * @return CharacterFromBook
      */
-    public function setOtherInformations($otherInformations)
+    public function setOtherInformation($otherInformation)
     {
-        $this->otherInformations = $otherInformations;
+        $this->otherInformation = $otherInformation;
 
         return $this;
     }
@@ -434,9 +434,9 @@ class CharacterFromBook
      *
      * @return string 
      */
-    public function getOtherInformations()
+    public function getOtherInformation()
     {
-        return $this->otherInformations;
+        return $this->otherInformation;
     }
 
     /**

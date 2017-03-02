@@ -168,6 +168,8 @@ class SearchController extends Controller
                     OR 
                     :emptyOtherCreature = true
                 )
+                AND
+                p.otherInformation LIKE :otherInformation
                 ORDER BY p.name ASC'
             )->setParameter('name', '%'.$name.'%')
             ->setParameter('gender', $gender)
@@ -188,7 +190,8 @@ class SearchController extends Controller
             ->setParameter('animalBeast', $animalBeast)
             ->setParameter('emptyAnimalBeast', $emptyAnimalBeast)
             ->setParameter('otherCreature', $otherCreature)
-            ->setParameter('emptyOtherCreature', $emptyOtherCreature);
+            ->setParameter('emptyOtherCreature', $emptyOtherCreature)
+            ->setParameter('otherInformation', '%'.$otherInformation.'%');
 
             $characterFromBooks = $query->getResult();
 

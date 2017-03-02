@@ -241,7 +241,7 @@ class CharacterFromBookController extends Controller
         $bookCharacter->setOtherCreature($otherCreature);
 
         $otherInformation = $request->get('otherInformation');
-        $bookCharacter->setOtherInformations($otherInformation);
+        $bookCharacter->setOtherInformation($otherInformation);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($bookCharacter);
