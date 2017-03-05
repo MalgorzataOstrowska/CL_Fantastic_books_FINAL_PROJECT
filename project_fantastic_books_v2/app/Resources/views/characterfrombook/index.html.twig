@@ -6,12 +6,18 @@
 
 {% block body %}
     <h1>Bookcharacters list</h1>
+    {# total items count #}
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
 
+    {# table body #}
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+            <th{% if pagination.isSorted('a.name') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Name', 'a.name') }}</th>
             <th>Gender</th>
             <th>Species</th>
             <th>Age</th>
@@ -28,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for characterFromBook in characterFromBooks %}
+        {% for characterFromBook in pagination %}
             <tr>
                 <td><a href="{{ path('editor_characterfrombook_show',
                     { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
@@ -61,5 +67,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}

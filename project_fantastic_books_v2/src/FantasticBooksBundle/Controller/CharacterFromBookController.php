@@ -20,14 +20,30 @@ class CharacterFromBookController extends Controller
      * @Route("/", name="editor_characterfrombook_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $characterFromBooks = $em->getRepository('FantasticBooksBundle:CharacterFromBook')->findAll();
+//
+//        return $this->render('characterfrombook/index.html.twig', array(
+//            'characterFromBooks' => $characterFromBooks,
+//        ));
 
-        $characterFromBooks = $em->getRepository('FantasticBooksBundle:CharacterFromBook')->findAll();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT a FROM FantasticBooksBundle:CharacterFromBook a";
+        $query = $em->createQuery($dql);
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        // parameters to template
         return $this->render('characterfrombook/index.html.twig', array(
-            'characterFromBooks' => $characterFromBooks,
+            'pagination' => $pagination
         ));
     }
 
