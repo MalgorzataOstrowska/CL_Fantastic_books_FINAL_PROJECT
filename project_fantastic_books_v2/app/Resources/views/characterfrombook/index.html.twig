@@ -8,22 +8,22 @@
     <h1>Bookcharacters list</h1>
     {# total items count #}
     <div class="count">
-        {{ pagination.getTotalItemCount }}
+        {{ characterFromBooks.getTotalItemCount }}
     </div>
 
     {# table body #}
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-            <th{% if pagination.isSorted('a.name') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(pagination, 'Name', 'a.name') }}</th>
-            <th{% if pagination.isSorted('a.gender') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(pagination, 'Gender', 'a.gender') }}</th>
-            <th{% if pagination.isSorted('a.species') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(pagination, 'Species', 'a.species') }}</th>
-            <th{% if pagination.isSorted('a.age') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(pagination, 'Age', 'a.age') }}</th>
+            <th>{{ knp_pagination_sortable(characterFromBooks, 'Id', 'a.id') }}</th>
+            <th{% if characterFromBooks.isSorted('a.name') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+            <th{% if characterFromBooks.isSorted('a.gender') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(characterFromBooks, 'Gender', 'a.gender') }}</th>
+            <th{% if characterFromBooks.isSorted('a.species') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(characterFromBooks, 'Species', 'a.species') }}</th>
+            <th{% if characterFromBooks.isSorted('a.age') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(characterFromBooks, 'Age', 'a.age') }}</th>
             <th>Ability</th>
             <th>Occupation</th>
             <th>Nothuman</th>
@@ -37,7 +37,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for characterFromBook in pagination %}
+        {% for characterFromBook in characterFromBooks %}
             <tr>
                 <td><a href="{{ path('editor_characterfrombook_show',
                     { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
@@ -72,6 +72,6 @@
     </table>
     {# display navigation #}
     <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
+        {{ knp_pagination_render(characterFromBooks) }}
     </div>
 {% endblock %}
