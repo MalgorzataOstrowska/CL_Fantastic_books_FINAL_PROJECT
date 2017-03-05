@@ -18,9 +18,12 @@
             <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
             <th{% if pagination.isSorted('a.name') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(pagination, 'Name', 'a.name') }}</th>
-            <th>Gender</th>
-            <th>Species</th>
-            <th>Age</th>
+            <th{% if pagination.isSorted('a.gender') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Gender', 'a.gender') }}</th>
+            <th{% if pagination.isSorted('a.species') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Species', 'a.species') }}</th>
+            <th{% if pagination.isSorted('a.age') %} class="sorted"{% endif %}>
+                {{ knp_pagination_sortable(pagination, 'Age', 'a.age') }}</th>
             <th>Ability</th>
             <th>Occupation</th>
             <th>Nothuman</th>
