@@ -1,7 +1,13 @@
-{% extends "::base.html.twig" %}
+{% extends '::characterfrombook/index.html.twig' %}
 
-{% block title %}FantasticBooksBundle:ShowCharacter:index{% endblock %}
+{% block title %}ShowCharacter{% endblock %}
 
-{% block body %}
-<h1>Welcome to the ShowCharacter:index page</h1>
-{% endblock %}
+    {% block paginationHead %}
+        <th>{{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+    {% endblock %}
+
+    {% block paginationBody %}
+        <td><a href="{{ path('fantasticbooks_showcharacter_show',
+            { 'id': characterFromBook.id }) }}">{{ characterFromBook.name }}</a></td>
+        {#<td>{{ characterFromBook.name }}</td>#}
+    {% endblock %}

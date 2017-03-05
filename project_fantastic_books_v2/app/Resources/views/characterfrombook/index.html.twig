@@ -15,9 +15,11 @@
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>{{ knp_pagination_sortable(characterFromBooks, 'Id', 'a.id') }}</th>
-            <th{% if characterFromBooks.isSorted('a.name') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+            {% block paginationHead %}
+                <th>{{ knp_pagination_sortable(characterFromBooks, 'Id', 'a.id') }}</th>
+                <th{% if characterFromBooks.isSorted('a.name') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+            {% endblock %}
             <th{% if characterFromBooks.isSorted('a.gender') %} class="sorted"{% endif %}>
                 {{ knp_pagination_sortable(characterFromBooks, 'Gender', 'a.gender') }}</th>
             <th{% if characterFromBooks.isSorted('a.species') %} class="sorted"{% endif %}>
@@ -39,9 +41,11 @@
         <tbody>
         {% for characterFromBook in characterFromBooks %}
             <tr>
-                <td><a href="{{ path('editor_characterfrombook_show',
-                    { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
-                <td>{{ characterFromBook.name }}</td>
+                {% block paginationBody %}
+                    <td><a href="{{ path('editor_characterfrombook_show',
+                        { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
+                    <td>{{ characterFromBook.name }}</td>
+                {% endblock %}
                 <td>{{ characterFromBook.gender }}</td>
                 <td>{{ characterFromBook.species }}</td>
                 <td>{{ characterFromBook.age }}</td>
