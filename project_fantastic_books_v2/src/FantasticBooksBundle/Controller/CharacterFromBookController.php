@@ -23,43 +23,9 @@ class CharacterFromBookController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = "SELECT a FROM FantasticBooksBundle:CharacterFromBook a";
-        $query = $em->createQuery($dql);
+        $dql = "SELECT a FROM FantasticBooksBundle:CharacterFromBook a";
 
-        $paginator  = $this->get('knp_paginator');
-        $characterFromBooks = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
-
-        $items = $characterFromBooks->getItems();
-        foreach ($items as $key => $value){
-            $ability= explode(",", $items[$key]->getAbility());
-            $items[$key]->setAbility($ability);
-
-            $occupation= explode(",", $items[$key]->getOccupation());
-            $items[$key]->setOccupation($occupation);
-
-            $notHuman= explode(",", $items[$key]->getNotHuman());
-            $items[$key]->setNotHuman($notHuman);
-
-            $mythology= explode(",", $items[$key]->getMythology());
-            $items[$key]->setMythology($mythology);
-
-            $biblicalCharacter= explode(",", $items[$key]->getBiblicalCharacter());
-            $items[$key]->setBiblicalCharacter($biblicalCharacter);
-
-            $mythologicalCreature= explode(",", $items[$key]->getMythologicalCreature());
-            $items[$key]->setMythologicalCreature($mythologicalCreature);
-
-            $animalBeast= explode(",", $items[$key]->getAnimalBeast());
-            $items[$key]->setAnimalBeast($animalBeast);
-
-            $otherCreature= explode(",", $items[$key]->getOtherCreature());
-            $items[$key]->setOtherCreature($otherCreature);
-        }
+        $characterFromBooks = $this->setCharacterFromBooks($dql, $request);
 
         // parameters to template
         return $this->render('characterfrombook/index.html.twig', array(
@@ -312,5 +278,45 @@ class CharacterFromBookController extends Controller
         return $bookCharacter->getId();
     }
 
+    protected function setCharacterFromBooks($dql, Request $request){
+        $em    = $this->get('doctrine.orm.entity_manager');
+
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $characterFromBooks = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        $items = $characterFromBooks->getItems();
+        foreach ($items as $key => $value){
+            $ability= explode(",", $items[$key]->getAbility());
+            $items[$key]->setAbility($ability);
+
+            $occupation= explode(",", $items[$key]->getOccupation());
+            $items[$key]->setOccupation($occupation);
+
+            $notHuman= explode(",", $items[$key]->getNotHuman());
+            $items[$key]->setNotHuman($notHuman);
+
+            $mythology= explode(",", $items[$key]->getMythology());
+            $items[$key]->setMythology($mythology);
+
+            $biblicalCharacter= explode(",", $items[$key]->getBiblicalCharacter());
+            $items[$key]->setBiblicalCharacter($biblicalCharacter);
+
+            $mythologicalCreature= explode(",", $items[$key]->getMythologicalCreature());
+            $items[$key]->setMythologicalCreature($mythologicalCreature);
+
+            $animalBeast= explode(",", $items[$key]->getAnimalBeast());
+            $items[$key]->setAnimalBeast($animalBeast);
+
+            $otherCreature= explode(",", $items[$key]->getOtherCreature());
+            $items[$key]->setOtherCreature($otherCreature);
+        }
+        return $characterFromBooks;
+    }
 }
 
