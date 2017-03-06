@@ -103,6 +103,32 @@ class CharacterFromBookController extends Controller
     {
         $deleteForm = $this->createDeleteForm($characterFromBook);
 
+        $ability= explode(",", $characterFromBook->getAbility());
+        $characterFromBook->setAbility($ability);
+
+        $occupation= explode(",", $characterFromBook->getOccupation());
+        $characterFromBook->setOccupation($occupation);
+
+        $notHuman= explode(",", $characterFromBook->getNotHuman());
+        $characterFromBook->setNotHuman($notHuman);
+
+        $mythology= explode(",", $characterFromBook->getMythology());
+        $characterFromBook->setMythology($mythology);
+
+        $biblicalCharacter= explode(",", $characterFromBook->getBiblicalCharacter());
+        $characterFromBook->setBiblicalCharacter($biblicalCharacter);
+
+        $mythologicalCreature= explode(",", $characterFromBook->getMythologicalCreature());
+        $characterFromBook->setMythologicalCreature($mythologicalCreature);
+
+        $animalBeast= explode(",", $characterFromBook->getAnimalBeast());
+        $characterFromBook->setAnimalBeast($animalBeast);
+
+        $otherCreature= explode(",", $characterFromBook->getOtherCreature());
+        $characterFromBook->setOtherCreature($otherCreature);
+
+
+
         return $this->render('characterfrombook/show.html.twig', array(
             'characterFromBook' => $characterFromBook,
             'delete_form' => $deleteForm->createView(),

@@ -80,21 +80,25 @@
                         {{ biblicalCharacter | trans}}
                         <br>
                     {% endfor %}
+                </td>
                 <td>
                     {% for mythologicalCreature in characterFromBook.mythologicalCreature %}
                         {{ mythologicalCreature | trans}}
                         <br>
                     {% endfor %}
+                </td>
                 <td>
                     {% for animalBeast in characterFromBook.animalBeast %}
                         {{ animalBeast | trans}}
                         <br>
                     {% endfor %}
+                </td>
                 <td>
                     {% for otherCreature in characterFromBook.otherCreature %}
                         {{ otherCreature | trans}}
                         <br>
                     {% endfor %}
+                </td>
                 <td>{{ characterFromBook.otherInformation }}</td>
                 {% block actionsBody %}
                     <td>

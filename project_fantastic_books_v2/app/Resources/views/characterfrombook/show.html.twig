@@ -4,62 +4,107 @@
     <h1>Characterfrombook</h1>
 
     <table  class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th class="col-sm-3"></th>
+            <th></th>
+        </tr>
+        </thead>
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ characterFromBook.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>{{ 'name.Name'| trans }}</th>
                 <td>{{ characterFromBook.name }}</td>
             </tr>
             <tr>
-                <th>Gender</th>
-                <td>{{ characterFromBook.gender }}</td>
+                <th>{{ 'gender.Gender'| trans }}</th>
+                <td>{{ characterFromBook.gender | trans }}</td>
             </tr>
             <tr>
-                <th>Species</th>
-                <td>{{ characterFromBook.species }}</td>
+                <th>{{ 'species.Species'| trans }}</th>
+                <td>{{ characterFromBook.species | trans }}</td>
             </tr>
             <tr>
-                <th>Age</th>
-                <td>{{ characterFromBook.age }}</td>
+                <th>{{ 'age.Age'| trans }}</th>
+                <td>{{ characterFromBook.age | trans }}</td>
             </tr>
             <tr>
-                <th>Ability</th>
-                <td>{{ characterFromBook.ability }}</td>
+                <th>{{ 'ability.Abilities'| trans }}</th>
+                <td>
+                    {% for ability in characterFromBook.ability %}
+                        {{ ability | trans}}
+                        <br>
+                    {% endfor %}</td>
             </tr>
             <tr>
-                <th>Occupation</th>
-                <td>{{ characterFromBook.occupation }}</td>
+                <th>{{ 'occupation.Occupation'| trans }}</th>
+                <td>
+                    {% for occupation in characterFromBook.occupation %}
+                        {{ occupation | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Nothuman</th>
-                <td>{{ characterFromBook.notHuman }}</td>
+                <th>{{ 'notHuman.Not human'| trans }}</th>
+                <td>
+                    {% for notHuman in characterFromBook.notHuman %}
+                        {{ notHuman | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Mythology</th>
-                <td>{{ characterFromBook.mythology }}</td>
+                <th>{{ 'mythology.Mythology'| trans }}</th>
+                <td>
+                    {% for mythology in characterFromBook.mythology %}
+                        {{ mythology | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Biblicalcharacter</th>
-                <td>{{ characterFromBook.biblicalCharacter }}</td>
+                <th>{{ 'biblicalCharacter.Biblical character'| trans }}</th>
+                <td>
+                    {% for biblicalCharacter in characterFromBook.biblicalCharacter %}
+                        {{ biblicalCharacter | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Mythologicalcreature</th>
-                <td>{{ characterFromBook.mythologicalCreature }}</td>
+                <th>{{ 'mythologicalCreature.Mythological creature'| trans }}</th>
+                <td>
+                    {% for mythologicalCreature in characterFromBook.mythologicalCreature %}
+                        {{ mythologicalCreature | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Animalbeast</th>
-                <td>{{ characterFromBook.animalBeast }}</td>
+                <th>{{ 'animalBeast.Animal/Beast'| trans }}</th>
+                <td>
+                    {% for animalBeast in characterFromBook.animalBeast %}
+                        {{ animalBeast | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Othercreature</th>
-                <td>{{ characterFromBook.otherCreature }}</td>
+                <th>{{ 'otherCreature.Other creature'| trans }}</th>
+                <td>
+                    {% for otherCreature in characterFromBook.otherCreature %}
+                        {{ otherCreature | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
-                <th>Otherinformations</th>
-                <td>{{ characterFromBook.otherInformation }}</td>
+                <th>{{ 'otherInformation.Other information'| trans }}</th>
+                <td>{{ characterFromBook.otherInformation | trans }}</td>
             </tr>
         </tbody>
     </table>
