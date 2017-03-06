@@ -54,15 +54,47 @@
                 <td>
                     {% for ability in characterFromBook.ability %}
                         {{ ability | trans}}
+                        <br>
                     {% endfor %}
                 </td>
-                <td>{{ characterFromBook.occupation }}</td>
-                <td>{{ characterFromBook.notHuman }}</td>
-                <td>{{ characterFromBook.mythology }}</td>
-                <td>{{ characterFromBook.biblicalCharacter }}</td>
-                <td>{{ characterFromBook.mythologicalCreature }}</td>
-                <td>{{ characterFromBook.animalBeast }}</td>
-                <td>{{ characterFromBook.otherCreature }}</td>
+                <td>
+                    {% for occupation in characterFromBook.occupation %}
+                        {{ occupation | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for notHuman in characterFromBook.notHuman %}
+                        {{ notHuman | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for mythology in characterFromBook.mythology %}
+                        {{ mythology | trans}}
+                        <br>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for biblicalCharacter in characterFromBook.biblicalCharacter %}
+                        {{ biblicalCharacter | trans}}
+                        <br>
+                    {% endfor %}
+                <td>
+                    {% for mythologicalCreature in characterFromBook.mythologicalCreature %}
+                        {{ mythologicalCreature | trans}}
+                        <br>
+                    {% endfor %}
+                <td>
+                    {% for animalBeast in characterFromBook.animalBeast %}
+                        {{ animalBeast | trans}}
+                        <br>
+                    {% endfor %}
+                <td>
+                    {% for otherCreature in characterFromBook.otherCreature %}
+                        {{ otherCreature | trans}}
+                        <br>
+                    {% endfor %}
                 <td>{{ characterFromBook.otherInformation }}</td>
                 {% block actionsBody %}
                     <td>

@@ -36,9 +36,29 @@ class CharacterFromBookController extends Controller
 
         $items = $characterFromBooks->getItems();
         foreach ($items as $key => $value){
-            $items[$key]->getAbility();
             $ability= explode(",", $items[$key]->getAbility());
             $items[$key]->setAbility($ability);
+
+            $occupation= explode(",", $items[$key]->getOccupation());
+            $items[$key]->setOccupation($occupation);
+
+            $notHuman= explode(",", $items[$key]->getNotHuman());
+            $items[$key]->setNotHuman($notHuman);
+
+            $mythology= explode(",", $items[$key]->getMythology());
+            $items[$key]->setMythology($mythology);
+
+            $biblicalCharacter= explode(",", $items[$key]->getBiblicalCharacter());
+            $items[$key]->setBiblicalCharacter($biblicalCharacter);
+
+            $mythologicalCreature= explode(",", $items[$key]->getMythologicalCreature());
+            $items[$key]->setMythologicalCreature($mythologicalCreature);
+
+            $animalBeast= explode(",", $items[$key]->getAnimalBeast());
+            $items[$key]->setAnimalBeast($animalBeast);
+
+            $otherCreature= explode(",", $items[$key]->getOtherCreature());
+            $items[$key]->setOtherCreature($otherCreature);
         }
 
         // parameters to template
