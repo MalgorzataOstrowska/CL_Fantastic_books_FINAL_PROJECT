@@ -35,7 +35,9 @@
             <th>{{ 'animalBeast.Animal/Beast'| trans }}</th>
             <th>{{ 'otherCreature.Other creature'| trans }}</th>
             <th>{{ 'otherInformation.Other information'| trans }}</th>
-            <th>{{ 'actions.Actions'| trans }}</th>
+            {% block actionsHead %}
+                <th>{{ 'actions.Actions'| trans }}</th>
+            {% endblock %}
         </tr>
         </thead>
         <tbody>
@@ -58,16 +60,16 @@
                 <td>{{ characterFromBook.animalBeast }}</td>
                 <td>{{ characterFromBook.otherCreature }}</td>
                 <td>{{ characterFromBook.otherInformation }}</td>
-                <td>
+                {% block actionsBody %}
+                    <td>
+                        <a href="{{ path('editor_characterfrombook_show',
+                        { 'id': characterFromBook.id }) }}">{{ 'actions.show'| trans }}</a>
+                        <br>
 
-                    <a href="{{ path('editor_characterfrombook_show',
-                    { 'id': characterFromBook.id }) }}">{{ 'actions.show'| trans }}</a>
-                    <br>
-
-                    <a href="{{ path('editor_characterfrombook_edit',
-                    { 'id': characterFromBook.id }) }}">{{ 'actions.edit'| trans }}</a>
-
-                </td>
+                        <a href="{{ path('editor_characterfrombook_edit',
+                        { 'id': characterFromBook.id }) }}">{{ 'actions.edit'| trans }}</a>
+                    </td>
+                {% endblock %}
             </tr>
         {% endfor %}
         </tbody>
