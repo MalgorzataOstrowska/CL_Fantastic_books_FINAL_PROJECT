@@ -5,7 +5,8 @@ namespace FantasticBooksBundle\Controller;
 use FantasticBooksBundle\Entity\CharacterFromBook;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Characterfrombook controller.
@@ -32,6 +33,13 @@ class CharacterFromBookController extends Controller
             $request->query->getInt('page', 1)/*page number*/,
             10/*limit per page*/
         );
+
+        $items = $characterFromBooks->getItems();
+        foreach ($items as $key => $value){
+            $items[$key]->getAbility();
+            $ability= explode(",", $items[$key]->getAbility());
+            $items[$key]->setAbility($ability);
+        }
 
         // parameters to template
         return $this->render('characterfrombook/index.html.twig', array(

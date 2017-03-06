@@ -51,7 +51,11 @@
                 <td>{{ characterFromBook.gender }}</td>
                 <td>{{ characterFromBook.species }}</td>
                 <td>{{ characterFromBook.age }}</td>
-                <td>{{ characterFromBook.ability }}</td>
+                <td>
+                    {% for ability in characterFromBook.ability %}
+                        {{ ability | trans}}
+                    {% endfor %}
+                </td>
                 <td>{{ characterFromBook.occupation }}</td>
                 <td>{{ characterFromBook.notHuman }}</td>
                 <td>{{ characterFromBook.mythology }}</td>
