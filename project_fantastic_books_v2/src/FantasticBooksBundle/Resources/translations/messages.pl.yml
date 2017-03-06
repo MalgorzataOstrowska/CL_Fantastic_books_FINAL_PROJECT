@@ -2,6 +2,11 @@ Character: Bohater
 index: indeks
 new: dodaj
 
+actions:
+  Actions: Działania
+  show: wyświetl
+  edit: edytuj
+
 name:
   Name: Imię
 

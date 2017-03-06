@@ -3,7 +3,7 @@
 {% block title %}ShowCharacter{% endblock %}
 
     {% block paginationHead %}
-        <th>{{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+        <th>{{ knp_pagination_sortable(characterFromBooks, 'name.Name'| trans, 'a.name') }}</th>
     {% endblock %}
 
     {% block paginationBody %}

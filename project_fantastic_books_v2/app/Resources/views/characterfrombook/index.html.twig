@@ -18,24 +18,24 @@
             {% block paginationHead %}
                 <th>{{ knp_pagination_sortable(characterFromBooks, 'Id', 'a.id') }}</th>
                 <th{% if characterFromBooks.isSorted('a.name') %} class="sorted"{% endif %}>
-                    {{ knp_pagination_sortable(characterFromBooks, 'Name', 'a.name') }}</th>
+                    {{ knp_pagination_sortable(characterFromBooks, 'name.Name'| trans, 'a.name') }}</th>
             {% endblock %}
             <th{% if characterFromBooks.isSorted('a.gender') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(characterFromBooks, 'Gender', 'a.gender') }}</th>
+                {{ knp_pagination_sortable(characterFromBooks, 'gender.Gender'| trans, 'a.gender') }}</th>
             <th{% if characterFromBooks.isSorted('a.species') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(characterFromBooks, 'Species', 'a.species') }}</th>
+                {{ knp_pagination_sortable(characterFromBooks, 'species.Species'| trans, 'a.species') }}</th>
             <th{% if characterFromBooks.isSorted('a.age') %} class="sorted"{% endif %}>
-                {{ knp_pagination_sortable(characterFromBooks, 'Age', 'a.age') }}</th>
-            <th>Ability</th>
-            <th>Occupation</th>
-            <th>Nothuman</th>
-            <th>Mythology</th>
-            <th>Biblicalcharacter</th>
-            <th>Mythologicalcreature</th>
-            <th>Animalbeast</th>
-            <th>Othercreature</th>
-            <th>Otherinformations</th>
-            <th>Actions</th>
+                {{ knp_pagination_sortable(characterFromBooks, 'age.Age'| trans, 'a.age') }}</th>
+            <th>{{ 'ability.Abilities'| trans }}</th>
+            <th>{{ 'occupation.Occupation'| trans }}</th>
+            <th>{{ 'notHuman.Not human'| trans }}</th>
+            <th>{{ 'mythology.Mythology'| trans }}</th>
+            <th>{{ 'biblicalCharacter.Biblical character'| trans }}</th>
+            <th>{{ 'mythologicalCreature.Mythological creature'| trans }}</th>
+            <th>{{ 'animalBeast.Animal/Beast'| trans }}</th>
+            <th>{{ 'otherCreature.Other creature'| trans }}</th>
+            <th>{{ 'otherInformation.Other information'| trans }}</th>
+            <th>{{ 'actions.Actions'| trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -59,16 +59,14 @@
                 <td>{{ characterFromBook.otherCreature }}</td>
                 <td>{{ characterFromBook.otherInformation }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('editor_characterfrombook_show',
-                            { 'id': characterFromBook.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('editor_characterfrombook_edit',
-                            { 'id': characterFromBook.id }) }}">edit</a>
-                        </li>
-                    </ul>
+
+                    <a href="{{ path('editor_characterfrombook_show',
+                    { 'id': characterFromBook.id }) }}">{{ 'actions.show'| trans }}</a>
+                    <br>
+
+                    <a href="{{ path('editor_characterfrombook_edit',
+                    { 'id': characterFromBook.id }) }}">{{ 'actions.edit'| trans }}</a>
+
                 </td>
             </tr>
         {% endfor %}
