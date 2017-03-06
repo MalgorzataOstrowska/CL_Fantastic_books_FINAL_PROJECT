@@ -19,9 +19,9 @@ gender:
 species:
   Species: Gatunek
   human: człowiek
-  child of human and not human:  dziecko człowieka i nieczłowieka
-  not human: nieczłowiek
-  child of different not humans: dziecko różnych nieludzi
+  childOfHumanAndNotHuman: dziecko człowieka i nieczłowieka
+  notHuman: nieczłowiek
+  childOfDifferentNotHumans: dziecko różnych nieludzi
   shapeshifter: zmiennokształtny
   other: inny
 
@@ -32,6 +32,18 @@ age:
   adult: dorosły
   ancient: starożytny
   other: inny
+
+ability:
+  Abilities: Zdolności
+  magic: magia
+  flying: latanie
+  teleportation: teleportacja
+  telekinesis: telekineza
+  invisibility: niewidzialność
+  telepathy: telepatia
+  foreseeFuture: przewidzenia przyszłości
+  seeingPast: widzenie przeszłości
+  other: inne
 
 occupation:
   Occupation: Zawód
@@ -46,21 +58,21 @@ occupation:
   student: student
   pupil: uczeń
   policeman: policjant
-  private eye: prywatny detektyw
+  privateEye: prywatny detektyw
   journalist: dziennikarz
   broker: makler
   architect: architekt
   bard: bard
   musician: muzyk
   actor: aktor
-  car mechanic: mechanik samochodowy
+  carMechanic: mechanik samochodowy
   cook: kucharz
   other: inny
 
 notHuman:
   Not human: Nieczłowiek
-  biblical character: postać biblijna
-  mythological character: postać mitologiczna
+  biblicalCharacter: postać biblijna
+  mythologicalCreature: postać mitologiczna
   other: inna
 
 biblicalCharacter:
@@ -91,19 +103,18 @@ mythologicalCreature:
   dwarf: krasnolud
   troll: troll
   orc: ork
-  other: inne
+  other: inna
 
 animalBeast:
-  Animal/Beast: Zwierzę/Bestia
+  Animal/Beast: Zwierzę / Bestia
   dragon: smok
   griffin: gryf
   harpy: harpia
-  thunderbird: ptaki grzmot
+  thunderbird: ptak grzmot
   wolf: wilk
   bear: niedźwiedź
   coyote: kojot
   hyena: hiena
-
   other: inne
 
 otherCreature:
@@ -114,17 +125,7 @@ otherCreature:
   alien: kosmita
   other: inna
 
-ability:
-  Abilities: Zdolności
-  magic: magia
-  flying: latanie
-  teleportation: teleportacja
-  telekinesis: telekineza
-  invisibility: niewidzialność
-  telepathy: telepatia
-  foresee future: przewidzenia przyszłości
-  seeing past: widzenie przeszłości
-  other: inne
+
 
 otherInformation:
   Other information: Inne informacje

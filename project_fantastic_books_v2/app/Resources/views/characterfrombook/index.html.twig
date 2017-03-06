@@ -48,9 +48,9 @@
                         { 'id': characterFromBook.id }) }}">{{ characterFromBook.id }}</a></td>
                     <td>{{ characterFromBook.name }}</td>
                 {% endblock %}
-                <td>{{ characterFromBook.gender }}</td>
-                <td>{{ characterFromBook.species }}</td>
-                <td>{{ characterFromBook.age }}</td>
+                <td>{{ characterFromBook.gender | trans }}</td>
+                <td>{{ characterFromBook.species | trans }}</td>
+                <td>{{ characterFromBook.age | trans }}</td>
                 <td>
                     {% for ability in characterFromBook.ability %}
                         {{ ability | trans}}
