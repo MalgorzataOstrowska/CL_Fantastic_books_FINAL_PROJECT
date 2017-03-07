@@ -2,8 +2,9 @@
 
 namespace FantasticBooksBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class SearchController extends Controller
@@ -18,7 +19,7 @@ class SearchController extends Controller
 
             $name = $request->get('name');
 
-            $gender = $request->get('gender');
+            echo $gender = $request->get('gender');
             if(is_null($gender)){
                 $gender = '%';
             }
@@ -34,81 +35,80 @@ class SearchController extends Controller
             }
 
             $ability = $request->get('ability');
+            $emptyAbility = false;
             if(is_null($ability)){
                 $ability = '.*';
                 $emptyAbility = true;
             } else if (is_array($ability)) {
                 $ability = implode(".*", $ability);
-                $emptyAbility = false;
             }
 
             $occupation = $request->get('occupation');
+            $emptyOccupation = false;
             if(is_null($occupation)){
                 $occupation = '.*';
                 $emptyOccupation = true;
             } else if (is_array($occupation)) {
                 $occupation = implode(".*", $occupation);
-                $emptyOccupation = false;
             }
 
             $notHuman = $request->get('notHuman');
+            $emptyNotHuman = false;
             if(is_null($notHuman)){
                 $notHuman = '.*';
                 $emptyNotHuman = true;
             } else if (is_array($notHuman)) {
                 $notHuman = implode(".*", $notHuman);
-                $emptyNotHuman = false;
             }
 
             $mythology = $request->get('mythology');
+            $emptyMythology = false;
             if(is_null($mythology)){
                 $mythology = '.*';
                 $emptyMythology = true;
             } else if (is_array($mythology)) {
                 $mythology = implode(".*", $mythology);
-                $emptyMythology = false;
             }
 
             $biblicalCharacter = $request->get('biblicalCharacter');
+            $emptyBiblicalCharacter = false;
             if(is_null($biblicalCharacter)){
                 $biblicalCharacter = '.*';
                 $emptyBiblicalCharacter = true;
             } else if (is_array($biblicalCharacter)) {
                 $biblicalCharacter = implode(".*", $biblicalCharacter);
-                $emptyBiblicalCharacter = false;
             }
 
             $mythologicalCreature = $request->get('mythologicalCreature');
+            $emptyMythologicalCreature = false;
             if(is_null($mythologicalCreature)){
                 $mythologicalCreature = '.*';
                 $emptyMythologicalCreature = true;
             } else if (is_array($mythologicalCreature)) {
                 $mythologicalCreature = implode(".*", $mythologicalCreature);
-                $emptyMythologicalCreature = false;
             }
 
             $animalBeast = $request->get('animalBeast');
+            $emptyAnimalBeast = false;
             if(is_null($animalBeast)){
                 $animalBeast = '.*';
                 $emptyAnimalBeast = true;
             } else if (is_array($animalBeast)) {
                 $animalBeast = implode(".*", $animalBeast);
-                $emptyAnimalBeast = false;
             }
 
             $otherCreature = $request->get('otherCreature');
+            $emptyOtherCreature = false;
             if(is_null($otherCreature)){
                 $otherCreature = '.*';
                 $emptyOtherCreature = true;
             } else if (is_array($otherCreature)) {
                 $otherCreature = implode(".*", $otherCreature);
-                $emptyOtherCreature = false;
             }
 
             $otherInformation = $request->get('otherInformation');
 
-
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->get('doctrine.orm.entity_manager');
 
             $query = $em->createQuery(
                 'SELECT p
@@ -172,29 +172,63 @@ class SearchController extends Controller
                 p.otherInformation LIKE :otherInformation
                 ORDER BY p.name ASC'
             )->setParameter('name', '%'.$name.'%')
-            ->setParameter('gender', $gender)
-            ->setParameter('species', $species)
-            ->setParameter('age', $age)
-            ->setParameter('ability', $ability)
-            ->setParameter('emptyAbility', $emptyAbility)
-            ->setParameter('occupation', $occupation)
-            ->setParameter('emptyOccupation', $emptyOccupation)
-            ->setParameter('notHuman', $notHuman)
-            ->setParameter('emptyNotHuman', $emptyNotHuman)
-            ->setParameter('mythology', $mythology)
-            ->setParameter('emptyMythology', $emptyMythology)
-            ->setParameter('biblicalCharacter', $biblicalCharacter)
-            ->setParameter('emptyBiblicalCharacter', $emptyBiblicalCharacter)
-            ->setParameter('mythologicalCreature', $mythologicalCreature)
-            ->setParameter('emptyMythologicalCreature', $emptyMythologicalCreature)
-            ->setParameter('animalBeast', $animalBeast)
-            ->setParameter('emptyAnimalBeast', $emptyAnimalBeast)
-            ->setParameter('otherCreature', $otherCreature)
-            ->setParameter('emptyOtherCreature', $emptyOtherCreature)
-            ->setParameter('otherInformation', '%'.$otherInformation.'%');
+                ->setParameter('gender', $gender)
+                ->setParameter('species', $species)
+                ->setParameter('age', $age)
+                ->setParameter('ability', $ability)
+                ->setParameter('emptyAbility', $emptyAbility)
+                ->setParameter('occupation', $occupation)
+                ->setParameter('emptyOccupation', $emptyOccupation)
+                ->setParameter('notHuman', $notHuman)
+                ->setParameter('emptyNotHuman', $emptyNotHuman)
+                ->setParameter('mythology', $mythology)
+                ->setParameter('emptyMythology', $emptyMythology)
+                ->setParameter('biblicalCharacter', $biblicalCharacter)
+                ->setParameter('emptyBiblicalCharacter', $emptyBiblicalCharacter)
+                ->setParameter('mythologicalCreature', $mythologicalCreature)
+                ->setParameter('emptyMythologicalCreature', $emptyMythologicalCreature)
+                ->setParameter('animalBeast', $animalBeast)
+                ->setParameter('emptyAnimalBeast', $emptyAnimalBeast)
+                ->setParameter('otherCreature', $otherCreature)
+                ->setParameter('emptyOtherCreature', $emptyOtherCreature)
+                ->setParameter('otherInformation', '%'.$otherInformation.'%');
+            $paginator  = $this->get('knp_paginator');
+            $characterFromBooks = $paginator->paginate(
+                $query, /* query NOT result */
+                $request->query->getInt('page', 1)/*page number*/,
+                10/*limit per page*/
+            );
 
-            $characterFromBooks = $query->getResult();
+            $items = $characterFromBooks->getItems();
+            foreach ($items as $key => $value){
+                $ability= explode(",", $items[$key]->getAbility());
+                $items[$key]->setAbility($ability);
 
+                $occupation= explode(",", $items[$key]->getOccupation());
+                $items[$key]->setOccupation($occupation);
+
+                $notHuman= explode(",", $items[$key]->getNotHuman());
+                $items[$key]->setNotHuman($notHuman);
+
+                $mythology= explode(",", $items[$key]->getMythology());
+                $items[$key]->setMythology($mythology);
+
+                $biblicalCharacter= explode(",", $items[$key]->getBiblicalCharacter());
+                $items[$key]->setBiblicalCharacter($biblicalCharacter);
+
+                $mythologicalCreature= explode(",", $items[$key]->getMythologicalCreature());
+                $items[$key]->setMythologicalCreature($mythologicalCreature);
+
+                $animalBeast= explode(",", $items[$key]->getAnimalBeast());
+                $items[$key]->setAnimalBeast($animalBeast);
+
+                $otherCreature= explode(",", $items[$key]->getOtherCreature());
+                $items[$key]->setOtherCreature($otherCreature);
+            }
+
+//            return $this->redirectToRoute('fantasticbooks_search_showcharacter',
+//                ['characterFromBooks' => $characterFromBooks]
+//            );
             return $this->render('FantasticBooksBundle:Search:show_character.html.twig', array(
                 'characterFromBooks' => $characterFromBooks,
             ));
@@ -208,13 +242,16 @@ class SearchController extends Controller
 
     /**
      * @Route("/showCharacter")
+     * @Method("GET")
      */
-    public function showCharacterAction($name)
+    public function showCharacterAction(Request $request)
     {
 
+
         return $this->render('FantasticBooksBundle:Search:show_character.html.twig', array(
-            // ...
+
         ));
     }
+
 
 }
