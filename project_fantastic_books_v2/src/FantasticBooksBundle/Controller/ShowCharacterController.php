@@ -2,11 +2,13 @@
 
 namespace FantasticBooksBundle\Controller;
 
+use FantasticBooksBundle\Entity\CharacterFromBook;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class ShowCharacterController extends Controller
+class ShowCharacterController extends CharacterFromBookController
 {
     /**
      * @Route("character/index")
@@ -27,15 +29,20 @@ class ShowCharacterController extends Controller
     }
 
     /**
+     * Finds and displays a characterFromBook entity.
+     *
      * @Route("character/show/{id}", name="fantasticbooks_showcharacter_show")
+     * @Method("GET")
      */
-    public function showCharacterAction($id)
+    public function showAction(CharacterFromBook $characterFromBook)
     {
+        $characterFromBook = $this->setCharacterFromBook($characterFromBook);
+
+
         return $this->render('FantasticBooksBundle:ShowCharacter:show.html.twig', array(
-            // ...
+            'characterFromBook' => $characterFromBook,
         ));
     }
-
     /**
      * @Route("character/showChosen/{chosen}")
      */
@@ -46,44 +53,4 @@ class ShowCharacterController extends Controller
         ));
     }
 
-    protected function setCharacterFromBooks($dql, Request $request){
-        $em    = $this->get('doctrine.orm.entity_manager');
-
-        $query = $em->createQuery($dql);
-
-        $paginator  = $this->get('knp_paginator');
-        $characterFromBooks = $paginator->paginate(
-            $query, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
-            10/*limit per page*/
-        );
-
-        $items = $characterFromBooks->getItems();
-        foreach ($items as $key => $value){
-            $ability= explode(",", $items[$key]->getAbility());
-            $items[$key]->setAbility($ability);
-
-            $occupation= explode(",", $items[$key]->getOccupation());
-            $items[$key]->setOccupation($occupation);
-
-            $notHuman= explode(",", $items[$key]->getNotHuman());
-            $items[$key]->setNotHuman($notHuman);
-
-            $mythology= explode(",", $items[$key]->getMythology());
-            $items[$key]->setMythology($mythology);
-
-            $biblicalCharacter= explode(",", $items[$key]->getBiblicalCharacter());
-            $items[$key]->setBiblicalCharacter($biblicalCharacter);
-
-            $mythologicalCreature= explode(",", $items[$key]->getMythologicalCreature());
-            $items[$key]->setMythologicalCreature($mythologicalCreature);
-
-            $animalBeast= explode(",", $items[$key]->getAnimalBeast());
-            $items[$key]->setAnimalBeast($animalBeast);
-
-            $otherCreature= explode(",", $items[$key]->getOtherCreature());
-            $items[$key]->setOtherCreature($otherCreature);
-        }
-        return $characterFromBooks;
-    }
 }
