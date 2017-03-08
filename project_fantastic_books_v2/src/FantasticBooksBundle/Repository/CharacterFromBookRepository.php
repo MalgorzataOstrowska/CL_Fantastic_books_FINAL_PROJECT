@@ -12,4 +12,113 @@ use Doctrine\ORM\EntityRepository;
  */
 class CharacterFromBookRepository extends EntityRepository
 {
+    public function findChosenCharacters($name,
+                                         $gender,
+                                         $species,
+                                         $age,
+                                         $ability,
+                                         $emptyAbility,
+                                         $occupation,
+                                         $emptyOccupation,
+                                         $notHuman,
+                                         $emptyNotHuman,
+                                         $mythology,
+                                         $emptyMythology,
+                                         $biblicalCharacter,
+                                         $emptyBiblicalCharacter,
+                                         $mythologicalCreature,
+                                         $emptyMythologicalCreature,
+                                         $animalBeast,
+                                         $emptyAnimalBeast,
+                                         $otherCreature,
+                                         $emptyOtherCreature,
+                                         $otherInformation){
+
+
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT p
+            FROM FantasticBooksBundle:CharacterFromBook p WHERE
+            p.name LIKE :name
+            AND
+            p.gender LIKE :gender
+            AND
+            p.species LIKE :species
+            AND
+            p.age LIKE :age
+            AND
+            (
+                REGEXP(p.ability, :ability) = true
+                OR
+                :emptyAbility = true
+            )
+            AND
+            (
+                REGEXP(p.occupation, :occupation) = true
+                OR
+                :emptyOccupation = true
+            )
+            AND
+            (
+                REGEXP(p.notHuman, :notHuman) = true
+                OR
+                :emptyNotHuman = true
+            )
+            AND
+            (
+                REGEXP(p.mythology, :mythology) = true
+                OR
+                :emptyMythology = true
+            )
+            AND
+            (
+                REGEXP(p.biblicalCharacter, :biblicalCharacter) = true
+                OR
+                :emptyBiblicalCharacter = true
+            )
+            AND
+            (
+                REGEXP(p.mythologicalCreature, :mythologicalCreature) = true
+                OR
+                :emptyMythologicalCreature = true
+            )
+            AND
+            (
+                REGEXP(p.animalBeast, :animalBeast) = true
+                OR
+                :emptyAnimalBeast = true
+            )
+            AND
+            (
+                REGEXP(p.otherCreature, :otherCreature) = true
+                OR
+                :emptyOtherCreature = true
+            )
+            AND
+            p.otherInformation LIKE :otherInformation
+            ORDER BY p.name ASC')
+            ->setParameter('name', '%' . $name . '%')
+            ->setParameter('gender', $gender)
+            ->setParameter('species', $species)
+            ->setParameter('age', $age)
+            ->setParameter('ability', $ability)
+            ->setParameter('emptyAbility', $emptyAbility)
+            ->setParameter('occupation', $occupation)
+            ->setParameter('emptyOccupation', $emptyOccupation)
+            ->setParameter('notHuman', $notHuman)
+            ->setParameter('emptyNotHuman', $emptyNotHuman)
+            ->setParameter('mythology', $mythology)
+            ->setParameter('emptyMythology', $emptyMythology)
+            ->setParameter('biblicalCharacter', $biblicalCharacter)
+            ->setParameter('emptyBiblicalCharacter', $emptyBiblicalCharacter)
+            ->setParameter('mythologicalCreature', $mythologicalCreature)
+            ->setParameter('emptyMythologicalCreature', $emptyMythologicalCreature)
+            ->setParameter('animalBeast', $animalBeast)
+            ->setParameter('emptyAnimalBeast', $emptyAnimalBeast)
+            ->setParameter('otherCreature', $otherCreature)
+            ->setParameter('emptyOtherCreature', $emptyOtherCreature)
+            ->setParameter('otherInformation', '%' . $otherInformation . '%')
+            ->getResult();
+
+        return $query;
+    }
 }
