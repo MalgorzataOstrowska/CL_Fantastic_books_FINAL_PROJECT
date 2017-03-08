@@ -266,6 +266,12 @@ class CharacterFromBookController extends Controller
             10/*limit per page*/
         );
 
+        $this->setItems($characterFromBooks);
+
+        return $characterFromBooks;
+    }
+
+    protected function setItems($characterFromBooks){
         $items = $characterFromBooks->getItems();
         foreach ($items as $key => $value){
             $ability= explode(",", $items[$key]->getAbility());
@@ -292,7 +298,6 @@ class CharacterFromBookController extends Controller
             $otherCreature= explode(",", $items[$key]->getOtherCreature());
             $items[$key]->setOtherCreature($otherCreature);
         }
-        return $characterFromBooks;
     }
 
     protected function setCharacterFromBook($characterFromBook){
