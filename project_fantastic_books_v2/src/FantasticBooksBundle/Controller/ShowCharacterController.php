@@ -38,6 +38,21 @@ class ShowCharacterController extends CharacterFromBookController
     {
         $characterFromBook = $this->setCharacterFromBook($characterFromBook);
 
+        $name = $characterFromBook->getName();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT b 
+             FROM FantasticBooksBundle:Book b
+             JOIN b.characters c
+             WHERE c.name = :name'
+        )->setParameter('name', $name);
+
+        $books = $query->getResult();
+        var_dump($books);
+die;
+
 
         return $this->render('FantasticBooksBundle:ShowCharacter:show.html.twig', array(
             'characterFromBook' => $characterFromBook,
