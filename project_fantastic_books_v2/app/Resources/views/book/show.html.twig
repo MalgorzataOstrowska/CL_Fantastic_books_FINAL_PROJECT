@@ -24,6 +24,19 @@
         </tbody>
     </table>
 
+
+    <h1>Characters:</h1>
+    <table  class="table table-striped table-bordered">
+        <tbody>
+        {% for name in names %}
+            <tr>
+                <td>{{ name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
     <ul>
         <li>
             <a href="{{ path('editor_book_index') }}">Back to the list</a>

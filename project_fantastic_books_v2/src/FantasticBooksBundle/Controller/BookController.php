@@ -76,9 +76,35 @@ class BookController extends Controller
     {
         $deleteForm = $this->createDeleteForm($book);
 
+
+        $titleOriginal = $book->getTitleOriginal();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT c,b
+             FROM FantasticBooksBundle:CharacterFromBook c
+             JOIN c.books b
+             WHERE b.titleOriginal = :titleOriginal'
+        )->setParameter('titleOriginal', $titleOriginal);
+
+        $result = $query->getArrayResult();
+
+        foreach ($result as $key => $value) {
+
+            $names[] = $result[$key]['name'];
+            $characterIds[] = $result[$key]['id'];
+            $booksIds[] = $result[$key]['books'][0]['id'];
+        }
+
+//        var_dump($names);
+//        var_dump($characterIds);
+//        var_dump($booksIds);
+
         return $this->render('book/show.html.twig', array(
             'book' => $book,
             'delete_form' => $deleteForm->createView(),
+            'names' => $names,
         ));
     }
 
