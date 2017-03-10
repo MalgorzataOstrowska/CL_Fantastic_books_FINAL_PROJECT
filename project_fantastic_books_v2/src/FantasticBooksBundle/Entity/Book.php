@@ -51,20 +51,6 @@ class Book
     private $titleOriginal;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="series", type="string", length=100, nullable=true)
-     */
-    private $series;
-
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="volume", type="float", nullable=true)
-     */
-    private $volume;
-
-    /**
      * Book constructor.
      */
     public function __construct()
@@ -155,52 +141,6 @@ class Book
     public function getTitleOriginal()
     {
         return $this->titleOriginal;
-    }
-
-    /**
-     * Set series
-     *
-     * @param string $series
-     * @return Book
-     */
-    public function setSeries($series)
-    {
-        $this->series = $series;
-
-        return $this;
-    }
-
-    /**
-     * Get series
-     *
-     * @return string 
-     */
-    public function getSeries()
-    {
-        return $this->series;
-    }
-
-    /**
-     * Set volume
-     *
-     * @param float $volume
-     * @return Book
-     */
-    public function setVolume($volume)
-    {
-        $this->volume = $volume;
-
-        return $this;
-    }
-
-    /**
-     * Get volume
-     *
-     * @return float 
-     */
-    public function getVolume()
-    {
-        return $this->volume;
     }
 
     /**
