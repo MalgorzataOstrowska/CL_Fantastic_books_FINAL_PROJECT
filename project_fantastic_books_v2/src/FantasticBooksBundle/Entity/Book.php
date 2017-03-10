@@ -14,6 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Book
 {
     /**
+     * @ORM\OneToMany(targetEntity="FantasticBooksBundle\Entity\Book_CharacterFromBook",
+     *     mappedBy="book")
+     */
+    private $books_characterFromBooks;
+    /**
      * @ORM\ManyToMany(targetEntity="CharacterFromBook", mappedBy="books")
      */
     private $characters;
@@ -88,6 +93,7 @@ class Book
      */
     public function __construct()
     {
+        $this->books_characterFromBooks = new ArrayCollection();
         $this->characters = new ArrayCollection();
         $this->authors = new ArrayCollection();
     }
@@ -96,6 +102,7 @@ class Book
     {
         return $this->getTitlePolish() . ' - ' . $this->getTitleOriginal();
     }
+
     /**
      * @return mixed
      */
@@ -237,4 +244,21 @@ class Book
     {
         return $this->volume;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBooksCharacterFromBooks()
+    {
+        return $this->books_characterFromBooks;
+    }
+
+    /**
+     * @param mixed $books_characterFromBooks
+     */
+    public function setBooksCharacterFromBooks($books_characterFromBooks)
+    {
+        $this->books_characterFromBooks = $books_characterFromBooks;
+    }
+
 }

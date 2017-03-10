@@ -13,6 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Book_CharacterFromBook
 {
     /**
+     * @ORM\ManyToOne(targetEntity="FantasticBooksBundle\Entity\CharacterFromBook",
+     *     inversedBy="books_characterFromBooks")
+     */
+    private $characterFromBook;
+    /**
+     * @ORM\ManyToOne(targetEntity="FantasticBooksBundle\Entity\Book",
+     *     inversedBy="books_characterFromBooks")
+     */
+
+    private $book;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -124,5 +135,38 @@ class Book_CharacterFromBook
     {
         return $this->characterType;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBook()
+    {
+        return $this->book;
+    }
+
+    /**
+     * @param mixed $book
+     */
+    public function setBook($book)
+    {
+        $this->book = $book;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCharacterFromBook()
+    {
+        return $this->characterFromBook;
+    }
+
+    /**
+     * @param mixed $characterFromBook
+     */
+    public function setCharacterFromBook($characterFromBook)
+    {
+        $this->characterFromBook = $characterFromBook;
+    }
+
 }
 

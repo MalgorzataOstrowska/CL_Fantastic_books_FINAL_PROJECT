@@ -14,6 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class CharacterFromBook
 {
     /**
+     * @ORM\OneToMany(targetEntity="FantasticBooksBundle\Entity\Book_CharacterFromBook",
+     *     mappedBy="characterFromBook")
+     */
+    private $books_characterFromBooks;
+    /**
      * @ORM\ManyToMany(targetEntity="Book", inversedBy="characters")
      */
     private $books;
@@ -123,6 +128,7 @@ class CharacterFromBook
      */
     public function __construct()
     {
+        $this->books_characterFromBooks = new ArrayCollection();
         $this->books = new ArrayCollection();
     }
 
@@ -453,6 +459,22 @@ class CharacterFromBook
     public function setBooks($books)
     {
         $this->books = $books;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBooksCharacterFromBooks()
+    {
+        return $this->books_characterFromBooks;
+    }
+
+    /**
+     * @param mixed $books_characterFromBooks
+     */
+    public function setBooksCharacterFromBooks($books_characterFromBooks)
+    {
+        $this->books_characterFromBooks = $books_characterFromBooks;
     }
 
 }
