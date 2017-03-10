@@ -33,20 +33,6 @@ class Book_CharacterFromBook
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="characterFromBookId", type="integer")
-     */
-    private $characterFromBookId;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="bookId", type="integer")
-     */
-    private $bookId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="characterType", type="string", length=100)
@@ -78,39 +64,6 @@ class Book_CharacterFromBook
         return $this;
     }
 
-    /**
-     * Get characterFromBookId
-     *
-     * @return int
-     */
-    public function getCharacterFromBookId()
-    {
-        return $this->characterFromBookId;
-    }
-
-    /**
-     * Set bookId
-     *
-     * @param integer $bookId
-     *
-     * @return Book_CharacterFromBook
-     */
-    public function setBookId($bookId)
-    {
-        $this->bookId = $bookId;
-
-        return $this;
-    }
-
-    /**
-     * Get bookId
-     *
-     * @return int
-     */
-    public function getBookId()
-    {
-        return $this->bookId;
-    }
 
     /**
      * Set characterType
