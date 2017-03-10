@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Book_characterfrombooks list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Charactertype</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book_CharacterFromBook in book_CharacterFromBooks %}
+            <tr>
+                <td><a href="{{ path('editor_book_characterfrombook_show', { 'id': book_CharacterFromBook.id }) }}">{{ book_CharacterFromBook.id }}</a></td>
+                <td>{{ book_CharacterFromBook.characterType }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('editor_book_characterfrombook_show', { 'id': book_CharacterFromBook.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editor_book_characterfrombook_edit', { 'id': book_CharacterFromBook.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editor_book_characterfrombook_new') }}">Create a new book_CharacterFromBook</a>
+        </li>
+    </ul>
+{% endblock %}
