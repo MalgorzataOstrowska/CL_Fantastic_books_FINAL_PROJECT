@@ -82,19 +82,24 @@ class BookController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $query = $em->createQuery(
-            'SELECT c,b
+            'SELECT c,bc,b
              FROM FantasticBooksBundle:CharacterFromBook c
-             JOIN c.books b
+             JOIN c.books_characterFromBooks bc
+             JOIN bc.book b
              WHERE b.titleOriginal = :titleOriginal'
         )->setParameter('titleOriginal', $titleOriginal);
 
         $result = $query->getArrayResult();
 
+        var_dump($result);
+//        die;
+        $names = [];
+
         foreach ($result as $key => $value) {
 
             $names[] = $result[$key]['name'];
-            $characterIds[] = $result[$key]['id'];
-            $booksIds[] = $result[$key]['books'][0]['id'];
+//            $characterIds[] = $result[$key]['id'];
+//            $booksIds[] = $result[$key]['books'][0]['id'];
         }
 
 //        var_dump($names);
