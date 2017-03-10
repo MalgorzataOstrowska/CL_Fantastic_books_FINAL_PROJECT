@@ -4,7 +4,62 @@
     <h1>Book_characterfrombook creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-3">
+                {{ form_label(form.characterType) }}<b>:</b>
+            </div>
+            <div class="col-sm-2">
+                <label>
+                    <input type="radio" name="characterType"
+                           id="main" value="main">
+                    {{ 'main'| trans }}
+                </label>
+            </div>
+            <div class="col-sm-2">
+                <label>
+                    <input type="radio" name="characterType"
+                           id="leading" value="leading">
+                    {{ 'leading'| trans }}
+                </label>
+            </div>
+            <div class="col-sm-2">
+                <label>
+                    <input type="radio" name="characterType"
+                           id="peripheral" value="peripheral">
+                    {{ 'peripheral'| trans }}
+                </label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                {{ form_label(form.characterFromBook) }}<b>:</b>
+            </div>
+            <div class="col-sm-3">
+                {{ form_widget(form.characterFromBook) }}
+            </div>
+            <div class="col-sm-4">
+                {{ form_errors(form.characterFromBook) }}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                {{ form_label(form.book) }}<b>:</b>
+            </div>
+            <div class="col-sm-3">
+                {{ form_widget(form.book) }}
+            </div>
+            <div class="col-sm-4">
+                {{ form_errors(form.book) }}
+            </div>
+        </div>
+        <br>
+    </div>
+
+
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 

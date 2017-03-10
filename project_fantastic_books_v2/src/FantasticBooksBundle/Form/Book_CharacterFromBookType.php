@@ -3,6 +3,7 @@
 namespace FantasticBooksBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,10 @@ class Book_CharacterFromBookType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('characterType')->add('characterFromBook')->add('book');
+        $builder
+            ->add('characterType', HiddenType::class)
+            ->add('characterFromBook')
+            ->add('book');
     }
     
     /**

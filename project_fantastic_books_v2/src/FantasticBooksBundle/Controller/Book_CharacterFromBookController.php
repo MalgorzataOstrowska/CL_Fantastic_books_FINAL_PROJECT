@@ -43,6 +43,9 @@ class Book_CharacterFromBookController extends Controller
         $form = $this->createForm('FantasticBooksBundle\Form\Book_CharacterFromBookType', $book_CharacterFromBook);
         $form->handleRequest($request);
 
+        $characterType = $request->get('characterType');
+        $book_CharacterFromBook->setCharacterType($characterType);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($book_CharacterFromBook);
