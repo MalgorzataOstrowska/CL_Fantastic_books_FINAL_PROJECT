@@ -48,10 +48,27 @@ class Book_CharacterFromBookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($book_CharacterFromBook);
-            $em->flush($book_CharacterFromBook);
 
-            return $this->redirectToRoute('editor_book_characterfrombook_show', array('id' => $book_CharacterFromBook->getId()));
+            $query = $em->createQuery(
+                'SELECT bc
+                 FROM FantasticBooksBundle:Book_CharacterFromBook bc
+                 WHERE 
+                 bc.characterFromBook = :characterFromBook
+                 AND
+                 bc.book = :book'
+            )->setParameter('characterFromBook', $book_CharacterFromBook->getCharacterFromBook())
+            ->setParameter('book', $book_CharacterFromBook->getBook());
+
+            $result = $query->getOneOrNullResult();
+
+            if(is_null($result)){
+                $em->persist($book_CharacterFromBook);
+                $em->flush($book_CharacterFromBook);
+
+                return $this->redirectToRoute('editor_book_characterfrombook_show',
+                    array('id' => $book_CharacterFromBook->getId()));
+            }
+
         }
 
         return $this->render('book_characterfrombook/new.html.twig', array(
