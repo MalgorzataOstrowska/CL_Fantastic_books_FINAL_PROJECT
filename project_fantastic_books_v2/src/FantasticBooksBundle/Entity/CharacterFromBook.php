@@ -18,10 +18,6 @@ class CharacterFromBook
      *     mappedBy="characterFromBook")
      */
     private $books_characterFromBooks;
-    /**
-     * @ORM\ManyToMany(targetEntity="Book", inversedBy="characters")
-     */
-    private $books;
 
     /**
      * @var int
@@ -129,7 +125,6 @@ class CharacterFromBook
     public function __construct()
     {
         $this->books_characterFromBooks = new ArrayCollection();
-        $this->books = new ArrayCollection();
     }
 
     public function __toString()
@@ -443,38 +438,6 @@ class CharacterFromBook
     public function getOtherInformation()
     {
         return $this->otherInformation;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBooks()
-    {
-        return $this->books;
-    }
-
-    /**
-     * @param mixed $books
-     */
-    public function setBooks($books)
-    {
-        $this->books = $books;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBooksCharacterFromBooks()
-    {
-        return $this->books_characterFromBooks;
-    }
-
-    /**
-     * @param mixed $books_characterFromBooks
-     */
-    public function setBooksCharacterFromBooks($books_characterFromBooks)
-    {
-        $this->books_characterFromBooks = $books_characterFromBooks;
     }
 
 }

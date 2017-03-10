@@ -18,31 +18,7 @@ class Book
      *     mappedBy="book")
      */
     private $books_characterFromBooks;
-    /**
-     * @ORM\ManyToMany(targetEntity="CharacterFromBook", mappedBy="books")
-     */
-    private $characters;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="Author", inversedBy="books")
-     */
-    private $authors;
-
-    /**
-     * @return mixed
-     */
-    public function getCharacters()
-    {
-        return $this->characters;
-    }
-
-    /**
-     * @param mixed $characters
-     */
-    public function setCharacters($characters)
-    {
-        $this->characters = $characters;
-    }
+   
 
     /**
      * @var int
@@ -94,29 +70,11 @@ class Book
     public function __construct()
     {
         $this->books_characterFromBooks = new ArrayCollection();
-        $this->characters = new ArrayCollection();
-        $this->authors = new ArrayCollection();
     }
 
     public function __toString()
     {
         return $this->getTitlePolish() . ' - ' . $this->getTitleOriginal();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthors()
-    {
-        return $this->authors;
-    }
-
-    /**
-     * @param mixed $authors
-     */
-    public function setAuthors($authors)
-    {
-        $this->authors = $authors;
     }
 
 
