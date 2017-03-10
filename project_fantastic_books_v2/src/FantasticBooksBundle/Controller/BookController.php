@@ -82,25 +82,25 @@ class BookController extends Controller
 
         $result = $query->getArrayResult();
 
-        var_dump($result);
-//        die;
-        $names = [];
+        $characterForm = [];
 
         foreach ($result as $key => $value) {
 
-            $names[] = $result[$key]['name'];
-//            $characterIds[] = $result[$key]['id'];
-//            $booksIds[] = $result[$key]['books'][0]['id'];
-        }
+            $id = $result[$key]['id'];
+            $name = $result[$key]['name'];
+            $characterType = $result[$key]['books_characterFromBooks'][0]['characterType'];
 
-//        var_dump($names);
-//        var_dump($characterIds);
-//        var_dump($booksIds);
+            $characterForm[]=[
+                'id' =>$id,
+                'name' =>$name,
+                'characterType' => $characterType
+            ];
+        }
 
         return $this->render('book/show.html.twig', array(
             'book' => $book,
             'delete_form' => $deleteForm->createView(),
-            'names' => $names,
+            'characterForm' => $characterForm,
         ));
     }
 

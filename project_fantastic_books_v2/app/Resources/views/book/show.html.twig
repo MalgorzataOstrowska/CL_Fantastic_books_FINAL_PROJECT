@@ -10,15 +10,15 @@
                 <td>{{ book.id }}</td>
             </tr>
             <tr>
-                <th>Titlepolish</th>
+                <th>{{ 'Titlepolish'| trans }}</th>
                 <td>{{ book.titlePolish }}</td>
             </tr>
             <tr>
-                <th>Titleenglish</th>
+                <th>{{ 'Titleenglish'| trans }}</th>
                 <td>{{ book.titleEnglish }}</td>
             </tr>
             <tr>
-                <th>Titleoriginal</th>
+                <th>{{ 'Titleoriginal'| trans }}</th>
                 <td>{{ book.titleOriginal }}</td>
             </tr>
         </tbody>
@@ -27,12 +27,23 @@
 
     <h1>Characters:</h1>
     <table  class="table table-striped table-bordered">
-        <tbody>
-        {% for name in names %}
+        <thead>
             <tr>
-                <td>{{ name }}</td>
+                <th>{{ 'name'| trans }}</th>
+                <th>{{ 'characterType'| trans }}</th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for character in characterForm %}
+                <tr>
+                    <td>
+                        <a href="{{ path('editor_characterfrombook_show',
+                        { 'id': character.id }) }}">{{ character.name }}</a>
+                    </td>
+
+                    <td>{{ character.characterType }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
