@@ -71,39 +71,7 @@ class CharacterFromBookController extends Controller
 
         $characterFromBook = $this->setCharacterFromBook($characterFromBook);
 
-
-        $name = $characterFromBook->getName();
-
-        $em = $this->getDoctrine()->getManager();
-
-        $query = $em->createQuery(
-            'SELECT b,bc,c
-             FROM FantasticBooksBundle:Book b
-             JOIN b.books_characterFromBooks bc
-             JOIN bc.characterFromBook c
-             WHERE c.name = :name'
-        )->setParameter('name', $name);
-
-        $result = $query->getArrayResult();
-
-        $bookForm = [];
-
-        foreach ($result as $key => $value) {
-
-            $id = $result[$key]['id'];
-            $titlePolish = $result[$key]['titlePolish'];
-            $titleEnglish = $result[$key]['titleEnglish'];
-            $titleOriginal = $result[$key]['titleOriginal'];
-            $characterType = $result[$key]['books_characterFromBooks'][0]['characterType'];
-
-            $bookForm[]=[
-                'id' =>$id,
-                'titlePolish' =>$titlePolish,
-                'titleEnglish' =>$titleEnglish,
-                'titleOriginal' =>$titleOriginal,
-                'characterType' => $characterType
-            ];
-        }
+        $bookForm = $this->setBookForm($characterFromBook);
 
         return $this->render('characterfrombook/show.html.twig', array(
             'characterFromBook' => $characterFromBook,
@@ -361,6 +329,43 @@ class CharacterFromBookController extends Controller
         $characterFromBook->setOtherCreature($otherCreature);
 
         return $characterFromBook;
+    }
+
+    protected function setBookForm($characterFromBook){
+        $name = $characterFromBook->getName();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->createQuery(
+            'SELECT b,bc,c
+             FROM FantasticBooksBundle:Book b
+             JOIN b.books_characterFromBooks bc
+             JOIN bc.characterFromBook c
+             WHERE c.name = :name'
+        )->setParameter('name', $name);
+
+        $result = $query->getArrayResult();
+
+        $bookForm = [];
+
+        foreach ($result as $key => $value) {
+
+            $id = $result[$key]['id'];
+            $titlePolish = $result[$key]['titlePolish'];
+            $titleEnglish = $result[$key]['titleEnglish'];
+            $titleOriginal = $result[$key]['titleOriginal'];
+            $characterType = $result[$key]['books_characterFromBooks'][0]['characterType'];
+
+            $bookForm[]=[
+                'id' =>$id,
+                'titlePolish' =>$titlePolish,
+                'titleEnglish' =>$titleEnglish,
+                'titleOriginal' =>$titleOriginal,
+                'characterType' => $characterType
+            ];
+        }
+
+        return $bookForm;
     }
 }
 
