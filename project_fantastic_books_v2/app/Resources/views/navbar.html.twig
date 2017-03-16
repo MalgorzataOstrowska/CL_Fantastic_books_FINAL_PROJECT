@@ -91,13 +91,17 @@
                                 {{ 'Book - Character'| trans }}
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ path('editor_author_book_new') }}">
+                                {{ 'Author - Book'| trans }}
+                            </a>
+                        </li>
                     </ul>
                 </li>
             {% endif %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-
-
+            
             {% if app.user %}
                 <li>
                     <a href="{{ path('fos_user_profile_show') }}">
