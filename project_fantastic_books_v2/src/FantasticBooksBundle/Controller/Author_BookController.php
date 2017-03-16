@@ -45,10 +45,30 @@ class Author_BookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($author_Book);
-            $em->flush($author_Book);
 
-            return $this->redirectToRoute('editor_author_book_show', array('id' => $author_Book->getId()));
+            $query = $em->createQuery(
+                'SELECT ab
+                 FROM FantasticBooksBundle:Author_Book ab
+                 WHERE 
+                 ab.author = :author
+                 AND
+                 ab.book = :book'
+            )->setParameter('author', $author_Book->getAuthor())
+                ->setParameter('book', $author_Book->getBook());
+
+            $result = $query->getOneOrNullResult();
+
+            if(is_null($result) &&
+                !is_null($author_Book->getAuthor()) &&
+                !is_null($author_Book->getBook())
+            ){
+                $em->persist($author_Book);
+                $em->flush($author_Book);
+
+                return $this->redirectToRoute('editor_author_book_show',
+                    array('id' => $author_Book->getId()));
+            }
+
         }
 
         return $this->render('author_book/new.html.twig', array(
