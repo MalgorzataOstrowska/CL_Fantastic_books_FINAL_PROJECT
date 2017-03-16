@@ -3,10 +3,12 @@
 {% block body %}
     <h1>Author_books list</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Author</th>
+                <th>Book</th>
                 <th>Series</th>
                 <th>Volume</th>
                 <th>Actions</th>
@@ -15,7 +17,28 @@
         <tbody>
         {% for author_Book in author_Books %}
             <tr>
-                <td><a href="{{ path('editor_author_book_show', { 'id': author_Book.id }) }}">{{ author_Book.id }}</a></td>
+                <td><a href="{{ path('editor_author_book_show', { 'id': author_Book.id }) }}">
+                        {{ author_Book.id }}</a></td>
+                <td>
+                    <a href="{{ path('editor_author_show', { 'id': author_Book.author.id }) }}">
+                        {{ author_Book.author.firstName }} {{ author_Book.author.lastName }}
+                    </a>
+                    <br>
+                    <a href="{{ path('editor_author_show', { 'id': author_Book.author.id }) }}">
+                        {{ author_Book.author.alias }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('editor_book_show', { 'id': author_Book.book.id }) }}">
+                        {{ author_Book.book.titlePolish }}</a>
+                    <br>
+                    <a href="{{ path('editor_book_show', { 'id': author_Book.book.id }) }}">
+                        {{ author_Book.book.titleEnglish }}</a>
+                    <br>
+                    <a href="{{ path('editor_book_show', { 'id': author_Book.book.id }) }}">
+                        {{ author_Book.book.titleOriginal }}</a>
+                    <br>
+                </td>
                 <td>{{ author_Book.series }}</td>
                 <td>{{ author_Book.volume }}</td>
                 <td>
