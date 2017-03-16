@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Book_characterfrombook creation</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'id': 'submitCreate'}}) }}
 
     <div class="form-group">
         <div class="row">
@@ -63,9 +63,29 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_book_characterfrombook_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('editor_book_characterfrombook_index') }}">Back to the list</a>#}
+        {#</li>#}
+    {#</ul>#}
+{% endblock %}
+
+
+{% block sidenav %}
+
+    <div class="inner_sidenav">
+        <div class="btn-group-vertical btn-block">
+            <button id="buttonCreate" type="button" class="btn btn-primary">Create</button>
+
+            <a type="button" class="btn btn-primary"
+               href="{{ path('editor_book_characterfrombook_index') }}">
+                Back to the list
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src={{ asset('bundles/fantasticbooks/js/sidenav.js') }}></script>
 {% endblock %}
