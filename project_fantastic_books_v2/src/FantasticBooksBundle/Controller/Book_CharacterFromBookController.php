@@ -61,7 +61,10 @@ class Book_CharacterFromBookController extends Controller
 
             $result = $query->getOneOrNullResult();
 
-            if(is_null($result)){
+            if(is_null($result) &&
+                !is_null($book_CharacterFromBook->getCharacterFromBook()) &&
+                !is_null($book_CharacterFromBook->getBook())
+            ){
                 $em->persist($book_CharacterFromBook);
                 $em->flush($book_CharacterFromBook);
 
