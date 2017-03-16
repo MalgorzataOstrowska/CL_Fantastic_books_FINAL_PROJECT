@@ -26,3 +26,8 @@ footer {
     }
     .row.content {height:auto;}
 }
+
+.inner_sidenav{
+    width: 80%;
+    margin: 20px auto;
+}

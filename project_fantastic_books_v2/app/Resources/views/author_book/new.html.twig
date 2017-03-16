@@ -4,13 +4,70 @@
     <h1>Author_book creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    {{ form_label(form.series) }}<b>:</b>
+                </div>
+                <div class="col-sm-3">
+                    {{ form_widget(form.series) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_errors(form.series) }}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    {{ form_label(form.volume) }}<b>:</b>
+                </div>
+                <div class="col-sm-3">
+                    {{ form_widget(form.volume) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_errors(form.volume) }}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    {{ form_label(form.author) }}<b>:</b>
+                </div>
+                <div class="col-sm-3">
+                    {{ form_widget(form.author) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_errors(form.author) }}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    {{ form_label(form.book) }}<b>:</b>
+                </div>
+                <div class="col-sm-3">
+                    {{ form_widget(form.book) }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form_errors(form.book) }}
+                </div>
+            </div>
+            <br>
+        </div>
+
         <input type="submit" value="Create" />
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_author_book_index') }}">Back to the list</a>
-        </li>
-    </ul>
+{% endblock %}
+
+
+{% block sidenav %}
+
+    <div class="inner_sidenav">
+        <a class="btn btn-primary btn-block" href="{{ path('editor_author_book_index') }}">
+            Back to the list
+        </a>
+    </div>
+
 {% endblock %}
