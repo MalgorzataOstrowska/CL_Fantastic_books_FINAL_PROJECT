@@ -2,14 +2,17 @@
 
 {% block body %}
     <h1>Book_characterfrombooks list</h1>
-
+    <div class="count">
+        {{ book_CharacterFromBooks.getTotalItemCount }}
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>{{ knp_pagination_sortable(book_CharacterFromBooks, 'Id', 'bc.id') }}</th>
                 <th>Book</th>
                 <th>Charactert</th>
-                <th>Charactertype</th>
+                <th>{{ knp_pagination_sortable(book_CharacterFromBooks,
+                    'Charactertype', 'bc.characterType') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -55,7 +58,10 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(book_CharacterFromBooks) }}
+    </div>
 {% endblock %}
 
 {% block sidenav %}
