@@ -44,10 +44,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('editor_author_book_show', { 'id': author_Book.id }) }}">show</a>
+                            <a href="{{ path('editor_author_book_show',
+                            { 'id': author_Book.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('editor_author_book_edit', { 'id': author_Book.id }) }}">edit</a>
+                            <a href="{{ path('editor_author_book_edit',
+                            { 'id': author_Book.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -55,10 +57,22 @@
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_author_book_new') }}">Create a new author_Book</a>
-        </li>
-    </ul>
+{% block sidenav %}
+
+    <div class="inner_sidenav">
+        <div class="btn-group-vertical btn-block">
+            <a type="button" class="btn btn-primary"
+               href="{{ path('editor_book_characterfrombook_new') }}">
+                Create new
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src={{ asset('bundles/fantasticbooks/js/sidenav.js') }}></script>
 {% endblock %}
