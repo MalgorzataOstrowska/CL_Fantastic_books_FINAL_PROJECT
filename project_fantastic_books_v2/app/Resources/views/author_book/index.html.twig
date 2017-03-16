@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Author_books list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Series</th>
+                <th>Volume</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for author_Book in author_Books %}
+            <tr>
+                <td><a href="{{ path('editor_author_book_show', { 'id': author_Book.id }) }}">{{ author_Book.id }}</a></td>
+                <td>{{ author_Book.series }}</td>
+                <td>{{ author_Book.volume }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('editor_author_book_show', { 'id': author_Book.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('editor_author_book_edit', { 'id': author_Book.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('editor_author_book_new') }}">Create a new author_Book</a>
+        </li>
+    </ul>
+{% endblock %}
