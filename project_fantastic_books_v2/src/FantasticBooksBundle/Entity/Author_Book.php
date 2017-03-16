@@ -13,6 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Author_Book
 {
     /**
+     * @ORM\ManyToOne(targetEntity="FantasticBooksBundle\Entity\Author", inversedBy="authors_books")
+     */
+    private $author;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FantasticBooksBundle\Entity\Book", inversedBy="authors_books")
+     */
+    private $book;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

@@ -18,7 +18,11 @@ class Book
      *     mappedBy="book")
      */
     private $books_characterFromBooks;
-   
+
+    /**
+     * @ORM\OneToMany(targetEntity="FantasticBooksBundle\Entity\Author_Book", mappedBy="book")
+     */
+    private $authors_books;
 
     /**
      * @var int
@@ -56,6 +60,7 @@ class Book
     public function __construct()
     {
         $this->books_characterFromBooks = new ArrayCollection();
+        $this->authors_books = new ArrayCollection();
     }
 
     public function __toString()

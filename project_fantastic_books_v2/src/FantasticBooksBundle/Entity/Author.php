@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 class Author
 {
     /**
+     * @ORM\OneToMany(targetEntity="FantasticBooksBundle\Entity\Author_Book", mappedBy="author")
+     */
+    private $authors_books;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -48,6 +53,14 @@ class Author
      * @ORM\Column(name="linkToHomePage", type="string", length=255, nullable=true)
      */
     private $linkToHomePage;
+
+    /**
+     * Author constructor.
+     */
+    public function __construct()
+    {
+        $this->authors_books = new ArrayCollection();
+    }
 
 
     /**
