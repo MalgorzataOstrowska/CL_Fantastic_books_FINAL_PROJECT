@@ -3,10 +3,12 @@
 {% block body %}
     <h1>Book_characterfrombooks list</h1>
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Book</th>
+                <th>Charactert</th>
                 <th>Charactertype</th>
                 <th>Actions</th>
             </tr>
@@ -14,15 +16,38 @@
         <tbody>
         {% for book_CharacterFromBook in book_CharacterFromBooks %}
             <tr>
-                <td><a href="{{ path('editor_book_characterfrombook_show', { 'id': book_CharacterFromBook.id }) }}">{{ book_CharacterFromBook.id }}</a></td>
+                <td>
+                    <a href="{{ path('editor_book_characterfrombook_show',
+                        { 'id': book_CharacterFromBook.id }) }}">{{ book_CharacterFromBook.id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('editor_book_show', { 'id': book_CharacterFromBook.book.id }) }}">
+                        {{ book_CharacterFromBook.book.titlePolish }}</a>
+                    <br>
+                    <a href="{{ path('editor_book_show', { 'id': book_CharacterFromBook.book.id }) }}">
+                        {{ book_CharacterFromBook.book.titleEnglish }}</a>
+                    <br>
+                    <a href="{{ path('editor_book_show', { 'id': book_CharacterFromBook.book.id }) }}">
+                        {{ book_CharacterFromBook.book.titleOriginal }}</a>
+                    <br>
+                </td>
+                <td>
+                    <a href="{{ path('editor_characterfrombook_show',
+                    { 'id': book_CharacterFromBook.characterFromBook.id }) }}">
+                        {{ book_CharacterFromBook.characterFromBook.name }}</a>
+                    <br>
+                </td>
                 <td>{{ book_CharacterFromBook.characterType }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('editor_book_characterfrombook_show', { 'id': book_CharacterFromBook.id }) }}">show</a>
+                            <a href="{{ path('editor_book_characterfrombook_show',
+                            { 'id': book_CharacterFromBook.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('editor_book_characterfrombook_edit', { 'id': book_CharacterFromBook.id }) }}">edit</a>
+                            <a href="{{ path('editor_book_characterfrombook_edit',
+                            { 'id': book_CharacterFromBook.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -31,9 +56,22 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('editor_book_characterfrombook_new') }}">Create a new book_CharacterFromBook</a>
-        </li>
-    </ul>
+{% endblock %}
+
+{% block sidenav %}
+
+    <div class="inner_sidenav">
+        <div class="btn-group-vertical btn-block">
+            <a type="button" class="btn btn-primary"
+               href="{{ path('editor_book_characterfrombook_new') }}">
+                Create new
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src={{ asset('bundles/fantasticbooks/js/sidenav.js') }}></script>
 {% endblock %}
