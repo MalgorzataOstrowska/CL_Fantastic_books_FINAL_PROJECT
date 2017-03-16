@@ -62,6 +62,10 @@ class Author
         $this->authors_books = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getFirstName() .' '. $this->getLastName() . ' (' . $this->getAlias() . ')';
+    }
 
     /**
      * Get id
