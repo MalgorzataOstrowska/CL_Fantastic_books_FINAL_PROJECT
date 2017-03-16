@@ -164,4 +164,22 @@ class Author
     {
         return $this->linkToHomePage;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthorsBooks()
+    {
+        return $this->authors_books;
+    }
+
+    /**
+     * @param mixed $authors_books
+     */
+    public function setAuthorsBooks($authors_books)
+    {
+        $this->authors_books = $authors_books;
+    }
+
+
 }
