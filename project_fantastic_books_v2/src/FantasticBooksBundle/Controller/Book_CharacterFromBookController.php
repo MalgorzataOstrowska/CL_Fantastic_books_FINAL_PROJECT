@@ -33,15 +33,6 @@ class Book_CharacterFromBookController extends Controller
             10/*limit per page*/
         );
 
-        // parameters to template
-//        return $this->render('book_characterfrombook/index.html.twig',
-//            array('pagination' => $pagination));
-
-
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $book_CharacterFromBooks = $em->getRepository('FantasticBooksBundle:Book_CharacterFromBook')->findAll();
-//
         return $this->render('book_characterfrombook/index.html.twig', array(
             'book_CharacterFromBooks' => $book_CharacterFromBooks,
         ));
