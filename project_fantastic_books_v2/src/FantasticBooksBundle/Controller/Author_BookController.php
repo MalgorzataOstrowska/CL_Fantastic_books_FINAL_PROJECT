@@ -20,11 +20,18 @@ class Author_BookController extends Controller
      * @Route("/", name="editor_author_book_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT ab FROM FantasticBooksBundle:Author_Book ab";
+        $query = $em->createQuery($dql);
 
-        $author_Books = $em->getRepository('FantasticBooksBundle:Author_Book')->findAll();
+        $paginator  = $this->get('knp_paginator');
+        $author_Books = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('author_book/index.html.twig', array(
             'author_Books' => $author_Books,

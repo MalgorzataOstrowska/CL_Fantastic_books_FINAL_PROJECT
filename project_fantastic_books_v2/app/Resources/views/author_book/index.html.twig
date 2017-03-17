@@ -2,15 +2,17 @@
 
 {% block body %}
     <h1>Author_books list</h1>
-
+    <div class="count">
+        {{ author_Books.getTotalItemCount }}
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>{{ knp_pagination_sortable(author_Books, 'Id', 'ab.id') }}</th>
                 <th>Author</th>
                 <th>Book</th>
-                <th>Series</th>
-                <th>Volume</th>
+                <th>{{ knp_pagination_sortable(author_Books, 'Series', 'ab.series') }}</th>
+                <th>{{ knp_pagination_sortable(author_Books, 'Volume', 'ab.volume') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -57,6 +59,10 @@
         {% endfor %}
         </tbody>
     </table>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(author_Books) }}
+    </div>
 {% endblock %}
 
 {% block sidenav %}
@@ -64,7 +70,7 @@
     <div class="inner_sidenav">
         <div class="btn-group-vertical btn-block">
             <a type="button" class="btn btn-primary"
-               href="{{ path('editor_book_characterfrombook_new') }}">
+               href="{{ path('editor_author_book_new') }}">
                 Create new
             </a>
         </div>
